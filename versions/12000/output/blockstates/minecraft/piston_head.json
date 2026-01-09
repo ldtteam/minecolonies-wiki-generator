@@ -1,0 +1,442 @@
+{
+  "properties": [
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "east",
+        "south",
+        "west",
+        "up",
+        "down"
+      ]
+    },
+    {
+      "property": "short",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "property": "type",
+      "type": "enum",
+      "values": [
+        "normal",
+        "sticky"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "555623678"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "703109632"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "-1487546211"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "-1340060257"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "1713287264"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "1860773218"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "40286587"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "187772541"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "-624999626"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "-477513672"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "567837029"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "715322983"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "1966549614"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "2114035568"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "-698515155"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "-551029201"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "up"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "-106533054"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "up"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "40952900"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "up"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "-539568423"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "up"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "-392082469"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "down"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "1869088283"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "down"
+        },
+        {
+          "property": "short",
+          "value": "true"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "2016574237"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "down"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "normal"
+        }
+      ],
+      "imageid": "575150880"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "down"
+        },
+        {
+          "property": "short",
+          "value": "false"
+        },
+        {
+          "property": "type",
+          "value": "sticky"
+        }
+      ],
+      "imageid": "722636834"
+    }
+  ]
+}

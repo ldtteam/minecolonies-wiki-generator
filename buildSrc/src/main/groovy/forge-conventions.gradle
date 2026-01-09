@@ -1,0 +1,78 @@
+import java.nio.file.Files
+import java.nio.file.Paths
+
+plugins {
+    id 'mc-conventions'
+    id 'net.minecraftforge.gradle'
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    implementation(fg.deobf("com.ldtteam:minecolonies:${project.minecolonies_version}"))
+    implementation(fg.deobf("com.ldtteam:structurize:${project.structurize_version}"))
+    implementation(fg.deobf("com.ldtteam:domum_ornamentum:${project.domum_ornamentum_version}:universal"))
+    implementation(fg.deobf("com.ldtteam:multipiston:${project.multi_piston_version}"))
+    implementation(fg.deobf("com.ldtteam:blockui:${project.blockui_version}"))
+    implementation(fg.deobf("com.ldtteam:datagenerators:${project.datagenerators_version}:universal"))
+}
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+
+    copyIdeResources = true
+
+    runs {
+        // applies to all the run configs below
+        configureEach {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+            workingDirectory project.file('run-data')
+
+            property 'forge.enabledGameTestNamespaces', mod_id
+
+            // Auto-join a world for rendering context
+            // You need to create a singleplayer world named 'datagen_world' first
+            afterEvaluate {
+                if (Files.exists(Paths.get(project.projectDir.absolutePath, 'run-data', 'saves', 'datagen_world', 'level.dat'))) {
+                    args '--quickPlaySingleplayer', 'datagen_world'
+                }
+            }
+        }
+    }
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [minecraft_version      : minecraft_version,
+                             minecraft_version_range: minecraft_version_range,
+                             forge_version          : forge_version,
+                             forge_version_range    : forge_version_range,
+                             loader_version_range   : loader_version_range,
+                             mod_id                 : mod_id,
+                             mod_name               : mod_name,
+                             mod_license            : mod_license,
+                             mod_version            : mod_version,
+                             mod_authors            : mod_authors,
+                             mod_description        : mod_description,
+                             mod_issue_tracker_url  : mod_issue_tracker_url]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    finalizedBy 'reobfJar'
+}
