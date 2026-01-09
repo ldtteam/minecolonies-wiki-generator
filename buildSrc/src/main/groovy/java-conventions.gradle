@@ -1,0 +1,21 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://ldtteam.jfrog.io/ldtteam/modding/'
+        name = 'LDTTeam - Modding'
+    }
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
