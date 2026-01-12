@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.ldtteam.minecolonieswikigenerator.client.IClientDataGenerator;
 import net.minecraft.client.renderer.block.BlockModelShaper;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -13,7 +14,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,7 +46,7 @@ public class BlockStatesDataGenerator implements IClientDataGenerator
             LOGGER.info("Starting block states data generation...");
             final AtomicInteger count = new AtomicInteger(0);
 
-            ForgeRegistries.BLOCKS.getEntries().forEach(entry -> {
+            BuiltInRegistries.BLOCK.entrySet().forEach(entry -> {
                 try
                 {
                     generateBlockStatesData(outputPath, entry.getKey().location(), entry.getValue());

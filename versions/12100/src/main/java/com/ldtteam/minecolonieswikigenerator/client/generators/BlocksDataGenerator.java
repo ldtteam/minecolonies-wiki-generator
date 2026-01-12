@@ -4,10 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.ldtteam.minecolonieswikigenerator.client.IClientDataGenerator;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.world.level.block.Block;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,13 +14,15 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Generates JSON data for all registered items.
+ * Generates JSON data for all registered blocks.
  */
-public class ItemsDataGenerator implements IClientDataGenerator
+public class BlocksDataGenerator implements IClientDataGenerator
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -30,52 +31,47 @@ public class ItemsDataGenerator implements IClientDataGenerator
     @Override
     public String getName()
     {
-        return "Items Data";
+        return "Blocks Data";
     }
 
     @Override
     public CompletableFuture<Void> generate(final Path outputPath)
     {
         return CompletableFuture.runAsync(() -> {
-            LOGGER.info("Starting items data generation...");
+            LOGGER.info("Starting blocks data generation...");
             final AtomicInteger count = new AtomicInteger(0);
 
-            ForgeRegistries.ITEMS.getEntries().forEach(entry -> {
+            BuiltInRegistries.BLOCK.entrySet().forEach(entry -> {
                 try
                 {
-                    generateItemData(outputPath, entry.getKey().location(), entry.getValue());
+                    generateBlockData(outputPath, entry.getKey().location(), entry.getValue());
                     count.incrementAndGet();
                 }
                 catch (Exception e)
                 {
-                    LOGGER.error("Error generating data for item: {}", entry.getKey().location(), e);
+                    LOGGER.error("Error generating data for block: {}", entry.getKey().location(), e);
                 }
             });
 
-            LOGGER.info("Items data generation complete. Generated {} files.", count.get());
+            LOGGER.info("Blocks data generation complete. Generated {} files.", count.get());
         });
     }
 
-    private void generateItemData(final Path outputPath, final ResourceLocation id, final Item item)
+    private void generateBlockData(final Path outputPath, final ResourceLocation id, final Block block)
     {
         final JsonObject json = new JsonObject();
-        json.addProperty("name", item.getDescription().getString());
+        json.addProperty("name", block.getName().getString());
 
-        if (item instanceof BlockItem blockItem)
-        {
-            final ResourceLocation blockKey = ForgeRegistries.BLOCKS.getKey(blockItem.getBlock());
-            if (blockKey != null)
-            {
-                json.addProperty("block-id", blockKey.toString());
-            }
-        }
+        final Map<Integer, Integer> statesAndCodes = new HashMap<>();
+        block.getStateDefinition().getPossibleStates().forEach(state -> statesAndCodes.put(state.hashCode(), block.getStateDefinition().getPossibleStates().indexOf(state)));
+        json.addProperty("defaultstate", statesAndCodes.get(block.defaultBlockState().hashCode()));
 
         saveJsonFile(outputPath, id, json);
     }
 
     private void saveJsonFile(final Path outputPath, final ResourceLocation id, final JsonObject json)
     {
-        final Path filePath = outputPath.resolve("items").resolve(id.getNamespace()).resolve(id.getPath() + ".json");
+        final Path filePath = outputPath.resolve("blocks").resolve(id.getNamespace()).resolve(id.getPath() + ".json");
 
         try
         {

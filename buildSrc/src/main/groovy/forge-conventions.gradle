@@ -40,8 +40,6 @@ minecraft {
         client {
             workingDirectory project.file('run-data')
 
-            property 'forge.enabledGameTestNamespaces', mod_id
-
             // Auto-join a world for rendering context
             // You need to create a singleplayer world named 'datagen_world' first
             afterEvaluate {

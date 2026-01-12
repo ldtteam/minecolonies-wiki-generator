@@ -1,11 +1,14 @@
 package com.ldtteam.minecolonieswikigenerator.client;
 
-import com.ldtteam.minecolonieswikigenerator.client.generators.*;
+import com.ldtteam.minecolonieswikigenerator.client.generators.BlocksDataGenerator;
+import com.ldtteam.minecolonieswikigenerator.client.generators.BlockImagesGenerator;
+import com.ldtteam.minecolonieswikigenerator.client.generators.BlockStatesDataGenerator;
+import com.ldtteam.minecolonieswikigenerator.client.generators.ItemsDataGenerator;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -53,17 +56,12 @@ public class ClientDataGenerator
         LOGGER.info("Client datagen mode enabled. Output path: {}", outputPath);
 
         final ClientDataGenerator instance = new ClientDataGenerator(outputPath);
-        MinecraftForge.EVENT_BUS.register(instance);
+        NeoForge.EVENT_BUS.register(instance);
     }
 
     @SubscribeEvent
-    public void onClientTick(final TickEvent.ClientTickEvent event)
+    public void onClientTick(final ClientTickEvent.Post event)
     {
-        if (event.phase != TickEvent.Phase.END)
-        {
-            return;
-        }
-
         final Minecraft mc = Minecraft.getInstance();
 
         // Wait for the game to be fully loaded

@@ -1,4 +1,4 @@
-package com.ldtteam.minecolonieswikigenerator.client.generators;
+package com.ldtteam.minecolonieswikigenerator.client;
 
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;

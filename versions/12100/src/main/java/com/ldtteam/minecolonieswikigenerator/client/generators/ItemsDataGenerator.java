@@ -4,10 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.ldtteam.minecolonieswikigenerator.client.IClientDataGenerator;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,7 +40,7 @@ public class ItemsDataGenerator implements IClientDataGenerator
             LOGGER.info("Starting items data generation...");
             final AtomicInteger count = new AtomicInteger(0);
 
-            ForgeRegistries.ITEMS.getEntries().forEach(entry -> {
+            BuiltInRegistries.ITEM.entrySet().forEach(entry -> {
                 try
                 {
                     generateItemData(outputPath, entry.getKey().location(), entry.getValue());
@@ -63,7 +63,7 @@ public class ItemsDataGenerator implements IClientDataGenerator
 
         if (item instanceof BlockItem blockItem)
         {
-            final ResourceLocation blockKey = ForgeRegistries.BLOCKS.getKey(blockItem.getBlock());
+            final ResourceLocation blockKey = BuiltInRegistries.BLOCK.getKeyOrNull(blockItem.getBlock());
             if (blockKey != null)
             {
                 json.addProperty("block-id", blockKey.toString());
