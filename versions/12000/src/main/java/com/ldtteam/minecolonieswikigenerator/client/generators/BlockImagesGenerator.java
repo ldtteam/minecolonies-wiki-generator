@@ -1,5 +1,6 @@
 package com.ldtteam.minecolonieswikigenerator.client.generators;
 
+import com.ldtteam.minecolonieswikigenerator.client.IClientDataGenerator;
 import com.mojang.blaze3d.pipeline.TextureTarget;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.platform.NativeImage;

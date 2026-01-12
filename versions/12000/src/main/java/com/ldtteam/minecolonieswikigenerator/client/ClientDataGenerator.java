@@ -39,8 +39,6 @@ public class ClientDataGenerator
         generators.add(new BlocksDataGenerator());
         generators.add(new BlockStatesDataGenerator());
         generators.add(new ItemsDataGenerator());
-
-        // Block images generator needs special handling for render thread
         blockImagesGenerator = new BlockImagesGenerator();
         generators.add(blockImagesGenerator);
     }

@@ -3,6 +3,7 @@ package com.ldtteam.minecolonieswikigenerator.client.generators;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.ldtteam.minecolonieswikigenerator.client.IClientDataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
