@@ -13,4 +13,5 @@ plugins {
 
 rootProject.name = 'minecolonies-wiki-generator'
 
+include ':common'
 new File(rootProject.projectDir, 'versions').list().toList().forEach { include ":versions:$it" }
