@@ -1,10 +1,8 @@
-package com.ldtteam.minecolonieswikigenerator.client.generators;
+package com.ldtteam.minecolonieswikigenerator.generators;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.ldtteam.minecolonieswikigenerator.client.IClientDataGenerator;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.BlockModelShaper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -17,9 +15,6 @@ import net.minecraft.world.level.block.state.properties.Property;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -27,11 +22,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Generates JSON data for all block states.
  */
-public class BlockStatesDataGenerator implements IClientDataGenerator
+public class BlockStatesDataGenerator extends DataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
-
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @Override
     public String getName()
@@ -40,7 +33,13 @@ public class BlockStatesDataGenerator implements IClientDataGenerator
     }
 
     @Override
-    public CompletableFuture<Void> generate(final Path outputPath)
+    public Path getGeneratorOutputPath(final Path rootPath)
+    {
+        return rootPath.resolve("block_states");
+    }
+
+    @Override
+    public CompletableFuture<Void> generate(final DataGeneratorOptions<ClientLevel> options)
     {
         return CompletableFuture.runAsync(() -> {
             LOGGER.info("Starting block states data generation...");
@@ -49,7 +48,7 @@ public class BlockStatesDataGenerator implements IClientDataGenerator
             BuiltInRegistries.BLOCK.entrySet().forEach(entry -> {
                 try
                 {
-                    generateBlockStatesData(outputPath, entry.getKey().location(), entry.getValue());
+                    generateBlockStatesData(options, entry.getKey().location(), entry.getValue());
                     count.incrementAndGet();
                 }
                 catch (Exception e)
@@ -62,7 +61,7 @@ public class BlockStatesDataGenerator implements IClientDataGenerator
         });
     }
 
-    private void generateBlockStatesData(final Path outputPath, final ResourceLocation id, final Block block)
+    private void generateBlockStatesData(final DataGeneratorOptions options, final ResourceLocation id, final Block block) throws Exception
     {
         final JsonObject json = new JsonObject();
 
@@ -97,7 +96,7 @@ public class BlockStatesDataGenerator implements IClientDataGenerator
         });
         json.add("blockstates", statesJson);
 
-        saveJsonFile(outputPath, id, json);
+        options.saveJsonFile(id.getNamespace(), id.getPath(), json);
     }
 
     private String getPropertyType(final Property<?> property)
@@ -123,23 +122,5 @@ public class BlockStatesDataGenerator implements IClientDataGenerator
     public static String getBlockStateIdentifier(final BlockState blockState)
     {
         return String.valueOf(BlockModelShaper.stateToModelLocation(blockState).hashCode());
-    }
-
-    private void saveJsonFile(final Path outputPath, final ResourceLocation id, final JsonObject json)
-    {
-        final Path filePath = outputPath
-            .resolve("blockstates")
-            .resolve(id.getNamespace())
-            .resolve(id.getPath() + ".json");
-
-        try
-        {
-            Files.createDirectories(filePath.getParent());
-            Files.writeString(filePath, GSON.toJson(json), StandardCharsets.UTF_8);
-        }
-        catch (IOException e)
-        {
-            LOGGER.error("Failed to save file: {}", filePath, e);
-        }
     }
 }

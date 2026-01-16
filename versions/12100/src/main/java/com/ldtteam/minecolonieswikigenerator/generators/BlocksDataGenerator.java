@@ -1,18 +1,13 @@
-package com.ldtteam.minecolonieswikigenerator.client.generators;
+package com.ldtteam.minecolonieswikigenerator.generators;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.ldtteam.minecolonieswikigenerator.client.IClientDataGenerator;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,11 +17,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Generates JSON data for all registered blocks.
  */
-public class BlocksDataGenerator implements IClientDataGenerator
+public class BlocksDataGenerator extends DataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
-
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @Override
     public String getName()
@@ -35,16 +28,22 @@ public class BlocksDataGenerator implements IClientDataGenerator
     }
 
     @Override
-    public CompletableFuture<Void> generate(final Path outputPath)
+    public Path getGeneratorOutputPath(final Path rootPath)
+    {
+        return rootPath.resolve("blocks");
+    }
+
+    @Override
+    public CompletableFuture<Void> generate(final DataGeneratorOptions<ClientLevel> options)
     {
         return CompletableFuture.runAsync(() -> {
             LOGGER.info("Starting blocks data generation...");
             final AtomicInteger count = new AtomicInteger(0);
 
-            ForgeRegistries.BLOCKS.getEntries().forEach(entry -> {
+            BuiltInRegistries.BLOCK.entrySet().forEach(entry -> {
                 try
                 {
-                    generateBlockData(outputPath, entry.getKey().location(), entry.getValue());
+                    generateBlockData(options, entry.getKey().location(), entry.getValue());
                     count.incrementAndGet();
                 }
                 catch (Exception e)
@@ -57,7 +56,7 @@ public class BlocksDataGenerator implements IClientDataGenerator
         });
     }
 
-    private void generateBlockData(final Path outputPath, final ResourceLocation id, final Block block)
+    private void generateBlockData(final DataGeneratorOptions options, final ResourceLocation id, final Block block) throws Exception
     {
         final JsonObject json = new JsonObject();
         json.addProperty("name", block.getName().getString());
@@ -66,21 +65,6 @@ public class BlocksDataGenerator implements IClientDataGenerator
         block.getStateDefinition().getPossibleStates().forEach(state -> statesAndCodes.put(state.hashCode(), block.getStateDefinition().getPossibleStates().indexOf(state)));
         json.addProperty("defaultstate", statesAndCodes.get(block.defaultBlockState().hashCode()));
 
-        saveJsonFile(outputPath, id, json);
-    }
-
-    private void saveJsonFile(final Path outputPath, final ResourceLocation id, final JsonObject json)
-    {
-        final Path filePath = outputPath.resolve("blocks").resolve(id.getNamespace()).resolve(id.getPath() + ".json");
-
-        try
-        {
-            Files.createDirectories(filePath.getParent());
-            Files.writeString(filePath, GSON.toJson(json), StandardCharsets.UTF_8);
-        }
-        catch (IOException e)
-        {
-            LOGGER.error("Failed to save file: {}", filePath, e);
-        }
+        options.saveJsonFile(id.getNamespace(), id.getPath(), json);
     }
 }

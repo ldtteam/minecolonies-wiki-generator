@@ -1,17 +1,74 @@
 package com.ldtteam.minecolonieswikigenerator;
 
-import com.ldtteam.minecolonieswikigenerator.client.ClientDataGenerator;
+import com.ldtteam.minecolonieswikigenerator.generators.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
+
+import java.nio.file.Path;
+import java.util.List;
 
 @Mod(Constants.MOD_ID)
-public class Entrypoint
+public class Entrypoint extends RootEntrypoint<ClientLevel>
 {
-    public Entrypoint(final FMLJavaModLoadingContext context)
+    public Entrypoint()
     {
-        // Initialize client-side data generator if in datagen mode
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> ClientDataGenerator::init);
+        super();
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> this::initialize);
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void onClientTick(final TickEvent.ClientTickEvent event)
+    {
+        if (event.phase != TickEvent.Phase.END)
+        {
+            return;
+        }
+
+        final Minecraft mc = Minecraft.getInstance();
+
+        // Wait for the game to be fully loaded
+        if (mc.level == null || mc.player == null)
+        {
+            return;
+        }
+
+        this.tick();
+    }
+
+    @Override
+    public ClientLevel getLevel()
+    {
+        return Minecraft.getInstance().level;
+    }
+
+    @Override
+    public Path getOutputPath()
+    {
+        return FMLPaths.GAMEDIR.get().resolve("..").resolve("output").normalize();
+    }
+
+    @Override
+    public List<? extends DataGenerator<ClientLevel>> getGenerators()
+    {
+        return List.of(new BlockImagesGenerator(),
+            new ItemImagesGenerator(),
+            new BlocksDataGenerator(),
+            new BlockStatesDataGenerator(),
+            new ItemsDataGenerator(),
+            new RecipesDataGenerator());
+    }
+
+    @Override
+    public void shutdown()
+    {
+        Minecraft.getInstance().tell(Minecraft.getInstance()::stop);
     }
 }

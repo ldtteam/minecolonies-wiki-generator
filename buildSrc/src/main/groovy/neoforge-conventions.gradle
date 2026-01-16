@@ -29,12 +29,11 @@ runs {
 
         afterEvaluate {
             if (Files.exists(Paths.get(project.projectDir.absolutePath, 'run-data', 'saves', 'datagen_world', 'level.dat'))) {
-                args '--quickPlaySingleplayer', 'datagen_world'
+                arguments.addAll '--quickPlaySingleplayer', 'datagen_world'
             }
         }
     }
 }
-
 
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [minecraft_version      : minecraft_version,
@@ -52,5 +51,24 @@ tasks.withType(ProcessResources).configureEach {
 
     filesMatching(['META-INF/neoforge.mods.toml']) {
         expand replaceProperties
+    }
+}
+
+// Implement mcgradleconventions loader attribute
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements'].each { variant ->
+    configurations.named("$variant") {
+        attributes {
+            attribute(loaderAttribute, 'neoforge')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName].each { variant->
+        configurations.named("$variant") {
+            attributes {
+                attribute(loaderAttribute, 'neoforge')
+            }
+        }
     }
 }

@@ -1,9 +1,7 @@
-package com.ldtteam.minecolonieswikigenerator.client.generators;
+package com.ldtteam.minecolonieswikigenerator.generators;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.ldtteam.minecolonieswikigenerator.client.IClientDataGenerator;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -11,9 +9,6 @@ import net.minecraft.world.item.Item;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -21,11 +16,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Generates JSON data for all registered items.
  */
-public class ItemsDataGenerator implements IClientDataGenerator
+public class ItemsDataGenerator extends DataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
-
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @Override
     public String getName()
@@ -34,7 +27,13 @@ public class ItemsDataGenerator implements IClientDataGenerator
     }
 
     @Override
-    public CompletableFuture<Void> generate(final Path outputPath)
+    public Path getGeneratorOutputPath(final Path rootPath)
+    {
+        return rootPath.resolve("items");
+    }
+
+    @Override
+    public CompletableFuture<Void> generate(final DataGeneratorOptions<ClientLevel> options)
     {
         return CompletableFuture.runAsync(() -> {
             LOGGER.info("Starting items data generation...");
@@ -43,7 +42,7 @@ public class ItemsDataGenerator implements IClientDataGenerator
             BuiltInRegistries.ITEM.entrySet().forEach(entry -> {
                 try
                 {
-                    generateItemData(outputPath, entry.getKey().location(), entry.getValue());
+                    generateItemData(options, entry.getKey().location(), entry.getValue());
                     count.incrementAndGet();
                 }
                 catch (Exception e)
@@ -56,7 +55,7 @@ public class ItemsDataGenerator implements IClientDataGenerator
         });
     }
 
-    private void generateItemData(final Path outputPath, final ResourceLocation id, final Item item)
+    private void generateItemData(final DataGeneratorOptions options, final ResourceLocation id, final Item item) throws Exception
     {
         final JsonObject json = new JsonObject();
         json.addProperty("name", item.getDescription().getString());
@@ -70,21 +69,6 @@ public class ItemsDataGenerator implements IClientDataGenerator
             }
         }
 
-        saveJsonFile(outputPath, id, json);
-    }
-
-    private void saveJsonFile(final Path outputPath, final ResourceLocation id, final JsonObject json)
-    {
-        final Path filePath = outputPath.resolve("items").resolve(id.getNamespace()).resolve(id.getPath() + ".json");
-
-        try
-        {
-            Files.createDirectories(filePath.getParent());
-            Files.writeString(filePath, GSON.toJson(json), StandardCharsets.UTF_8);
-        }
-        catch (IOException e)
-        {
-            LOGGER.error("Failed to save file: {}", filePath, e);
-        }
+        options.saveJsonFile(id.getNamespace(), id.getPath(), json);
     }
 }
