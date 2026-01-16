@@ -106,8 +106,8 @@ public class BlockImagesGenerator extends LongRunningDataGenerator<ClientLevel>
      */
     public static byte[] renderBlockStateToImage(final BlockState state, final int maxSize, final ClientLevel level)
     {
-        // Render at 4x resolution for better anti-aliasing through supersampling
-        final int renderSize = maxSize * 2;
+        // Render at 4x resolution for better antialiasing through supersampling
+        final int renderSize = maxSize * 4;
 
         final Minecraft mc = Minecraft.getInstance();
 
