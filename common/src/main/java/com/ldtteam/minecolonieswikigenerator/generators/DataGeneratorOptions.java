@@ -31,11 +31,17 @@ public class DataGeneratorOptions<L>
 
     /**
      * Gets the level instance, useful for BlockEntity rendering that requires world access.
+     *
      * @return the level instance
      */
     public L getLevel()
     {
         return level;
+    }
+
+    public Gson getGson()
+    {
+        return gson;
     }
 
     public void saveJsonFile(final String namespace, final String path, final JsonObject json) throws IOException
