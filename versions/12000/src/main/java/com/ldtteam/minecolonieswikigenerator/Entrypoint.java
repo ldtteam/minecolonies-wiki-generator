@@ -61,6 +61,7 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
         collector.add(true, new BlockDataGenerator());
         collector.add(true, new BlockImageGenerator());
         collector.add(true, new BlockStateDataGenerator());
+        collector.add(true, new CitizenNamesDataGenerator());
         collector.add(true, new CrafterRecipeDataGenerator());
         collector.add(true, new ItemDataGenerator());
         collector.add(true, new ItemImageDataGenerator());
