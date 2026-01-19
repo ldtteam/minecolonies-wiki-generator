@@ -37,7 +37,7 @@ public class LanguageDataGenerator extends DataGenerator<ClientLevel>
         return CompletableFuture.runAsync(() -> {
             LOGGER.info("Starting language data generation...");
 
-            final FileToIdConverter languages = new FileToIdConverter("lang", ".json");
+            final FileToIdConverter languages = new FileToIdConverter("lang", "en_us.json");
 
             final JsonObject allTranslations = new JsonObject();
             languages.listMatchingResources(Minecraft.getInstance().getResourceManager()).forEach((key, value) -> {

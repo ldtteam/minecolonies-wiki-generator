@@ -31,14 +31,14 @@ import java.util.function.Consumer;
  * This handles both 2D item sprites and 3D block models correctly.
  * This generator must run on the render thread since it requires OpenGL context.
  */
-public class ItemImageGenerator extends LongRunningDataGenerator<ClientLevel>
+public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final int IMAGE_SIZE = 300;
     private static final int BATCH_SIZE = 10;
 
-    public ItemImageGenerator()
+    public ItemImageDataGenerator()
     {
         super(BATCH_SIZE);
     }

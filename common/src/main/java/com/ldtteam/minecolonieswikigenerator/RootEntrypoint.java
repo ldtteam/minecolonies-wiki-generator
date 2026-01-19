@@ -4,6 +4,7 @@ import com.ldtteam.minecolonieswikigenerator.generators.DataGenerator;
 import com.ldtteam.minecolonieswikigenerator.generators.DataGeneratorManager;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,9 +24,28 @@ public abstract class RootEntrypoint<L>
 
     public abstract Path getOutputPath();
 
-    public abstract List<? extends DataGenerator<L>> getGenerators();
+    protected abstract void getGenerators(final DataGeneratorCollector<L> collector);
 
     public abstract void shutdown();
+
+    public final DataGenerators<L> getGenerators()
+    {
+        final List<DataGenerator<L>> activeGenerators = new ArrayList<>();
+        final List<DataGenerator<L>> inactiveGenerators = new ArrayList<>();
+
+        getGenerators((active, generator) -> {
+            if (active)
+            {
+                activeGenerators.add(generator);
+            }
+            else
+            {
+                inactiveGenerators.add(generator);
+            }
+        });
+
+        return new DataGenerators<>(activeGenerators, inactiveGenerators);
+    }
 
     protected final void initialize()
     {
@@ -38,5 +58,17 @@ public abstract class RootEntrypoint<L>
         {
             this.generator.tick();
         }
+    }
+
+    public record DataGenerators<L>(
+        List<DataGenerator<L>> activeGenerators,
+        List<DataGenerator<L>> inactiveGenerators)
+    {
+    }
+
+    @FunctionalInterface
+    protected interface DataGeneratorCollector<L>
+    {
+        void add(final boolean active, final DataGenerator<L> generator);
     }
 }

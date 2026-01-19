@@ -13,7 +13,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.nio.file.Path;
-import java.util.List;
 
 @Mod(Constants.MOD_ID)
 public class Entrypoint extends RootEntrypoint<ClientLevel>
@@ -57,19 +56,19 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
     }
 
     @Override
-    public List<? extends DataGenerator<ClientLevel>> getGenerators()
+    protected void getGenerators(final DataGeneratorCollector<ClientLevel> collector)
     {
-        return List.of(new BlockImageGenerator(),
-            new BlockDataGenerator(),
-            new BlockStateDataGenerator(),
-            new CrafterRecipeDataGenerator(),
-            new ItemImageDataGenerator(),
-            new ItemDataGenerator(),
-            new LanguageDataGenerator(),
-            new RecipeDataGenerator(),
-            new ResearchDataGenerator(ResearchObjectType.RESEARCH),
-            new ResearchDataGenerator(ResearchObjectType.RESEARCH_TREE),
-            new ResearchDataGenerator(ResearchObjectType.RESEARCH_EFFECT));
+        collector.add(true, new BlockDataGenerator());
+        collector.add(true, new BlockImageGenerator());
+        collector.add(true, new BlockStateDataGenerator());
+        collector.add(true, new CrafterRecipeDataGenerator());
+        collector.add(true, new ItemDataGenerator());
+        collector.add(true, new ItemImageDataGenerator());
+        collector.add(true, new LanguageDataGenerator());
+        collector.add(true, new RecipeDataGenerator());
+        collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH));
+        collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH_TREE));
+        collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH_EFFECT));
     }
 
     @Override
