@@ -1,6 +1,7 @@
 package com.ldtteam.minecolonieswikigenerator;
 
 import com.ldtteam.minecolonieswikigenerator.generators.*;
+import com.ldtteam.minecolonieswikigenerator.research.ResearchObjectType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraftforge.api.distmarker.Dist;
@@ -63,7 +64,10 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
             new BlocksDataGenerator(),
             new BlockStatesDataGenerator(),
             new ItemsDataGenerator(),
-            new RecipesDataGenerator());
+            new RecipesDataGenerator(),
+            new ResearchDataGenerator(ResearchObjectType.RESEARCH),
+            new ResearchDataGenerator(ResearchObjectType.RESEARCH_TREE),
+            new ResearchDataGenerator(ResearchObjectType.RESEARCH_EFFECT));
     }
 
     @Override
