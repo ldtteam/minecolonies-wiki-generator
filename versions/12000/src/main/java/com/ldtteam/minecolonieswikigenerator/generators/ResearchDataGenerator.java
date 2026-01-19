@@ -10,9 +10,8 @@ import net.minecraft.server.packs.resources.Resource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -75,9 +74,9 @@ public class ResearchDataGenerator extends DataGenerator<ClientLevel>
 
     private boolean generateResearchData(final DataGeneratorOptions<ClientLevel> options, final ResourceLocation researchId, final Resource resource) throws IOException
     {
-        try (final InputStream stream = resource.open())
+        try (final BufferedReader reader = resource.openAsReader())
         {
-            final JsonObject json = options.getGson().fromJson(new String(stream.readAllBytes(), StandardCharsets.UTF_8), JsonObject.class);
+            final JsonObject json = options.getGson().fromJson(reader, JsonObject.class);
             if (getType(json).equals(type))
             {
                 options.saveJsonFile(researchId.getNamespace(), researchId.getPath().replaceAll(".*/", ""), json);

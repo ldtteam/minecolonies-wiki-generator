@@ -1,7 +1,7 @@
 package com.ldtteam.minecolonieswikigenerator.generators;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -44,7 +44,7 @@ public class DataGeneratorOptions<L>
         return gson;
     }
 
-    public void saveJsonFile(final String namespace, final String path, final JsonObject json) throws IOException
+    public void saveJsonFile(final String namespace, final String path, final JsonElement json) throws IOException
     {
         saveFile(namespace, path, "json", gson.toJson(json).getBytes(StandardCharsets.UTF_8));
     }

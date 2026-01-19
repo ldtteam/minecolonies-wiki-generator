@@ -60,6 +60,7 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
             new CrafterRecipeDataGenerator(),
             new ItemDataGenerator(),
             new ItemImageGenerator(),
+            new LanguageDataGenerator(),
             new RecipesDataGenerator(),
             new ResearchDataGenerator(ResearchObjectType.RESEARCH),
             new ResearchDataGenerator(ResearchObjectType.RESEARCH_TREE),
