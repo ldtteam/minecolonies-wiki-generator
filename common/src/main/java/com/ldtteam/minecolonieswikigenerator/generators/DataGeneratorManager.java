@@ -28,7 +28,7 @@ public final class DataGeneratorManager<L>
 
     private final RootEntrypoint<L> entrypoint;
 
-    private final List<? extends DataGenerator<L>> generators;
+    private final RootEntrypoint.DataGenerators<L> generators;
 
     private final Deque<LongRunningDataGenerator<L>> longRunningGenerators;
 
@@ -41,14 +41,19 @@ public final class DataGeneratorManager<L>
     {
         this.entrypoint = entrypoint;
         this.generators = entrypoint.getGenerators();
-        this.longRunningGenerators = new ArrayDeque<>(generators.stream().filter(LongRunningDataGenerator.class::isInstance).map(g -> (LongRunningDataGenerator<L>) g).toList());
+        this.longRunningGenerators =
+            new ArrayDeque<>(generators.activeGenerators().stream().filter(LongRunningDataGenerator.class::isInstance).map(g -> (LongRunningDataGenerator<L>) g).toList());
     }
 
     public void tick()
     {
         if (!initialized.getAndSet(true))
         {
-            LOGGER.info("Starting data generation with {} generators...", generators.size());
+            LOGGER.info("Starting data generation with {} generators...", generators.activeGenerators().size());
+            if (!generators.inactiveGenerators().isEmpty())
+            {
+                LOGGER.info("{} disabled generators will be skipped.", generators.inactiveGenerators().size());
+            }
             startAllGenerators();
         }
 
@@ -78,9 +83,28 @@ public final class DataGeneratorManager<L>
     {
         final List<CompletableFuture<Void>> futures = new ArrayList<>();
 
-        if (Files.exists(this.entrypoint.getOutputPath()))
+        final L level = entrypoint.getLevel();
+
+        for (final DataGenerator<L> generator : generators.activeGenerators())
         {
-            try (Stream<Path> walk = Files.walk(this.entrypoint.getOutputPath()))
+            LOGGER.info("Starting generator: {}", generator.getName());
+
+            final Path generatorOutputPath = generator.getGeneratorOutputPath(this.entrypoint.getOutputPath());
+            deletePath(generatorOutputPath);
+
+            final DataGeneratorOptions<L> options = new DataGeneratorOptions<>(generatorOutputPath, GSON, level);
+            futures.add(generator.generate(options));
+        }
+
+        allGeneratorsFuture = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+    }
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void deletePath(final Path path)
+    {
+        if (Files.exists(path))
+        {
+            try (Stream<Path> walk = Files.walk(path))
             {
                 walk.sorted(Comparator.reverseOrder()).map(Path::toFile).forEach(File::delete);
             }
@@ -89,18 +113,5 @@ public final class DataGeneratorManager<L>
                 throw new RuntimeException(e);
             }
         }
-
-        final L level = entrypoint.getLevel();
-
-        for (final DataGenerator<L> generator : generators)
-        {
-            LOGGER.info("Starting generator: {}", generator.getName());
-
-            final Path generatorOutputPath = generator.getGeneratorOutputPath(this.entrypoint.getOutputPath());
-            final DataGeneratorOptions<L> options = new DataGeneratorOptions<>(generatorOutputPath, GSON, level);
-            futures.add(generator.generate(options));
-        }
-
-        allGeneratorsFuture = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
     }
 }
