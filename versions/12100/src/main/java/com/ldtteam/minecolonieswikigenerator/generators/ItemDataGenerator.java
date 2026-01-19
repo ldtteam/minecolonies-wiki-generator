@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Generates JSON data for all registered items.
  */
-public class ItemsDataGenerator extends DataGenerator<ClientLevel>
+public class ItemDataGenerator extends DataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
 

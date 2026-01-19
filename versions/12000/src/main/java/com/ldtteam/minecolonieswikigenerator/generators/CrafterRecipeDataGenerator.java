@@ -15,53 +15,53 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Generates JSON data for all recipes.
+ * Generates JSON data for all crafter recipes.
  */
-public class RecipesDataGenerator extends DataGenerator<ClientLevel>
+public class CrafterRecipeDataGenerator extends DataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
     @Override
     public String getName()
     {
-        return "Recipes Data";
+        return "Crafter Recipes Data";
     }
 
     @Override
     public Path getGeneratorOutputPath(final Path rootPath)
     {
-        return rootPath.resolve("recipes");
+        return rootPath.resolve("crafter_recipes");
     }
 
     @Override
     public CompletableFuture<Void> generate(final DataGeneratorOptions<ClientLevel> options)
     {
         return CompletableFuture.runAsync(() -> {
-            LOGGER.info("Starting recipes data generation...");
+            LOGGER.info("Starting crafter recipes data generation...");
             final AtomicInteger count = new AtomicInteger(0);
 
-            final FileToIdConverter recipes = FileToIdConverter.json("recipes");
-            recipes.listMatchingResources(Minecraft.getInstance().getSingleplayerServer().getResourceManager()).forEach((key, value) -> {
+            final FileToIdConverter crafterRecipes = FileToIdConverter.json("crafterrecipes");
+            crafterRecipes.listMatchingResources(Minecraft.getInstance().getSingleplayerServer().getResourceManager()).forEach((key, value) -> {
                 try
                 {
-                    generateRecipeData(options, recipes.fileToId(key), value);
+                    generateCrafterRecipeData(options, crafterRecipes.fileToId(key), value);
                     count.incrementAndGet();
                 }
                 catch (Exception e)
                 {
-                    LOGGER.error("Error generating data for recipes: {}", key, e);
+                    LOGGER.error("Error generating data for crafter recipes: {}", key, e);
                 }
             });
 
-            LOGGER.info("Recipes data generation complete. Generated {} files.", count.get());
+            LOGGER.info("Crafter recipes data generation complete. Generated {} files.", count.get());
         });
     }
 
-    private void generateRecipeData(final DataGeneratorOptions<ClientLevel> options, final ResourceLocation recipeId, final Resource resource) throws IOException
+    private void generateCrafterRecipeData(final DataGeneratorOptions<ClientLevel> options, final ResourceLocation crafterRecipeId, final Resource resource) throws IOException
     {
         try (final InputStream stream = resource.open())
         {
-            options.saveFile(recipeId.getNamespace(), recipeId.getPath().replaceAll(".*/", ""), "json", stream.readAllBytes());
+            options.saveFile(crafterRecipeId.getNamespace(), crafterRecipeId.getPath().replaceAll(".*/", ""), "json", stream.readAllBytes());
         }
     }
 }

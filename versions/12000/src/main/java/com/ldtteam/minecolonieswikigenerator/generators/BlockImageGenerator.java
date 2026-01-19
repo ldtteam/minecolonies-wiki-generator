@@ -39,14 +39,14 @@ import java.util.function.Consumer;
  * <p>
  * This generator must run on the render thread since it requires OpenGL context.
  */
-public class BlockImagesGenerator extends LongRunningDataGenerator<ClientLevel>
+public class BlockImageGenerator extends LongRunningDataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
     private static final int IMAGE_SIZE = 300;
     private static final int BATCH_SIZE = 10;
 
-    public BlockImagesGenerator()
+    public BlockImageGenerator()
     {
         super(BATCH_SIZE);
     }
@@ -76,7 +76,7 @@ public class BlockImagesGenerator extends LongRunningDataGenerator<ClientLevel>
 
     private void generateBlockImage(final DataGeneratorOptions<ClientLevel> options, final ResourceLocation blockId, final BlockState state)
     {
-        final String identifier = BlockStatesDataGenerator.getBlockStateIdentifier(state);
+        final String identifier = BlockStateDataGenerator.getBlockStateIdentifier(state);
         try
         {
             final byte[] imageData = renderBlockStateToImage(state, IMAGE_SIZE, options.getLevel());

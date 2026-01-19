@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.BlockModelShaper;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -11,7 +12,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Generates JSON data for all block states.
  */
-public class BlockStatesDataGenerator extends DataGenerator<ClientLevel>
+public class BlockStateDataGenerator extends DataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -45,7 +45,7 @@ public class BlockStatesDataGenerator extends DataGenerator<ClientLevel>
             LOGGER.info("Starting block states data generation...");
             final AtomicInteger count = new AtomicInteger(0);
 
-            ForgeRegistries.BLOCKS.getEntries().forEach(entry -> {
+            BuiltInRegistries.BLOCK.entrySet().forEach(entry -> {
                 try
                 {
                     generateBlockStatesData(options, entry.getKey().location(), entry.getValue());
@@ -61,7 +61,7 @@ public class BlockStatesDataGenerator extends DataGenerator<ClientLevel>
         });
     }
 
-    private void generateBlockStatesData(final DataGeneratorOptions<ClientLevel> options, final ResourceLocation id, final Block block) throws Exception
+    private void generateBlockStatesData(final DataGeneratorOptions options, final ResourceLocation id, final Block block) throws Exception
     {
         final JsonObject json = new JsonObject();
 

@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Generates JSON data for all registered blocks.
  */
-public class BlocksDataGenerator extends DataGenerator<ClientLevel>
+public class BlockDataGenerator extends DataGenerator<ClientLevel>
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
