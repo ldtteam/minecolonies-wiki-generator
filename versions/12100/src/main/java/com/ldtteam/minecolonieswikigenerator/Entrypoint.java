@@ -54,11 +54,12 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
     @Override
     public List<? extends DataGenerator<ClientLevel>> getGenerators()
     {
-        return List.of(new BlockImagesGenerator(),
-            new ItemImagesGenerator(),
-            new BlocksDataGenerator(),
-            new BlockStatesDataGenerator(),
-            new ItemsDataGenerator(),
+        return List.of(new BlockDataGenerator(),
+            new BlockImageGenerator(),
+            new BlockStateDataGenerator(),
+            new CrafterRecipeDataGenerator(),
+            new ItemDataGenerator(),
+            new ItemImageGenerator(),
             new RecipesDataGenerator(),
             new ResearchDataGenerator(ResearchObjectType.RESEARCH),
             new ResearchDataGenerator(ResearchObjectType.RESEARCH_TREE),
