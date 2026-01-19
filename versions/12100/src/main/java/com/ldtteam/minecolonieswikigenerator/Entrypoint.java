@@ -53,19 +53,19 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
     @Override
     protected void getGenerators(final DataGeneratorCollector<ClientLevel> collector)
     {
-        collector.add(false, new BlockDataGenerator());
-        collector.add(false, new BlockImageGenerator());
-        collector.add(false, new BlockStateDataGenerator());
-        collector.add(false, new CitizenNamesDataGenerator());
-        collector.add(false, new CrafterRecipeDataGenerator());
-        collector.add(false, new ItemDataGenerator());
-        collector.add(false, new ItemImageDataGenerator());
+        collector.add(true, new BlockDataGenerator());
+        collector.add(true, new BlockImageGenerator());
+        collector.add(true, new BlockStateDataGenerator());
+        collector.add(true, new CitizenNamesDataGenerator());
+        collector.add(true, new CrafterRecipeDataGenerator());
+        collector.add(true, new ItemDataGenerator());
+        collector.add(true, new ItemImageDataGenerator());
         collector.add(true, new ItemTagDataGenerator());
-        collector.add(false, new LanguageDataGenerator());
-        collector.add(false, new RecipeDataGenerator());
-        collector.add(false, new ResearchDataGenerator(ResearchObjectType.RESEARCH));
-        collector.add(false, new ResearchDataGenerator(ResearchObjectType.RESEARCH_TREE));
-        collector.add(false, new ResearchDataGenerator(ResearchObjectType.RESEARCH_EFFECT));
+        collector.add(true, new LanguageDataGenerator());
+        collector.add(true, new RecipeDataGenerator());
+        collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH));
+        collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH_TREE));
+        collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH_EFFECT));
     }
 
     @Override
