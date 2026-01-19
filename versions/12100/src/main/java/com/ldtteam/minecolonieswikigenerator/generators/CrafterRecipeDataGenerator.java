@@ -61,7 +61,7 @@ public class CrafterRecipeDataGenerator extends DataGenerator<ClientLevel>
     {
         try (final InputStream stream = resource.open())
         {
-            options.saveFile(crafterRecipeId.getNamespace(), crafterRecipeId.getPath().replaceAll(".*/", ""), "json", stream.readAllBytes());
+            options.saveFile(crafterRecipeId.getNamespace(), crafterRecipeId.getPath(), "json", stream.readAllBytes());
         }
     }
 }

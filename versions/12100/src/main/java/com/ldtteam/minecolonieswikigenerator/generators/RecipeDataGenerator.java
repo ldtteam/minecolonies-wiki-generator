@@ -62,7 +62,7 @@ public class RecipeDataGenerator extends DataGenerator<ClientLevel>
     {
         try (final InputStream stream = resource.open())
         {
-            options.saveFile(recipeId.getNamespace(), recipeId.getPath().replaceAll(".*/", ""), "json", stream.readAllBytes());
+            options.saveFile(recipeId.getNamespace(), recipeId.getPath(), "json", stream.readAllBytes());
         }
     }
 }
