@@ -65,6 +65,7 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
         collector.add(true, new CrafterRecipeDataGenerator());
         collector.add(true, new ItemDataGenerator());
         collector.add(true, new ItemImageDataGenerator());
+        collector.add(true, new ItemTagDataGenerator());
         collector.add(true, new LanguageDataGenerator());
         collector.add(true, new RecipeDataGenerator());
         collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH));
