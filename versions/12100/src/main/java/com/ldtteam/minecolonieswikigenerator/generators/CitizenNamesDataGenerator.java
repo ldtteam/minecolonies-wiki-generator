@@ -61,7 +61,7 @@ public class CitizenNamesDataGenerator extends DataGenerator<ClientLevel>
     {
         try (final InputStream stream = resource.open())
         {
-            options.saveFile(citizenNameId.getNamespace(), citizenNameId.getPath().replaceAll(".*/", ""), "json", stream.readAllBytes());
+            options.saveFile(citizenNameId.getNamespace(), citizenNameId.getPath(), "json", stream.readAllBytes());
         }
     }
 }

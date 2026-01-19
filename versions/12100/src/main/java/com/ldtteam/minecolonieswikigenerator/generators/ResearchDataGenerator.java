@@ -80,7 +80,7 @@ public class ResearchDataGenerator extends DataGenerator<ClientLevel>
             final JsonObject json = options.getGson().fromJson(new String(stream.readAllBytes(), StandardCharsets.UTF_8), JsonObject.class);
             if (getType(json).equals(type))
             {
-                options.saveJsonFile(researchId.getNamespace(), researchId.getPath().replaceAll(".*/", ""), json);
+                options.saveJsonFile(researchId.getNamespace(), researchId.getPath(), json);
                 return true;
             }
         }
