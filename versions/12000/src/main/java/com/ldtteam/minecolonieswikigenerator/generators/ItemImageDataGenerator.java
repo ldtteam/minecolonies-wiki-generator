@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -61,13 +60,6 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
         ForgeRegistries.ITEMS.getEntries().forEach(entry -> {
             final Item item = entry.getValue();
             final ResourceLocation itemId = entry.getKey().location();
-
-            // Skip BlockItems - they are handled by BlockImagesGenerator
-            if (item instanceof BlockItem)
-            {
-                return;
-            }
-
             register.accept(() -> generateItemImage(options, itemId, item));
         });
     }
