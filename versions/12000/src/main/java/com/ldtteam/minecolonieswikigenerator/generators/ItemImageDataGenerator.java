@@ -7,15 +7,12 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexSorting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -89,11 +86,70 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
      * Renders an item to a PNG image using Minecraft's ItemRenderer.
      * This mimics GuiGraphics.renderItem() but renders to a framebuffer.
      *
-     * @param stack   the item stack to render
-     * @param maxSize the maximum size of the output image (width and height)
+     * @param stack the item stack to render
+     * @param size  the maximum size of the output image (width and height)
      * @return the rendered image as PNG byte data, or null if rendering failed
      */
-    public static byte[] renderItemToImage(final ItemStack stack, final int maxSize)
+    public static byte[] renderItemToImage(final ItemStack stack, final int size)
+    {
+        if (stack.isEmpty())
+        {
+            return null;
+        }
+
+        final Minecraft mc = Minecraft.getInstance();
+
+        // Create framebuffer
+        final TextureTarget renderTarget = new TextureTarget(size, size, true, Minecraft.ON_OSX);
+        renderTarget.setClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        renderTarget.clear(Minecraft.ON_OSX);
+        renderTarget.bindWrite(true);
+
+        // Set up projection
+        final Matrix4f matrix4f = (new Matrix4f()).setOrtho(0.0F, size, size, 0.0F, 1000.0F, ForgeHooksClient.getGuiFarPlane());
+        RenderSystem.setProjectionMatrix(matrix4f, VertexSorting.ORTHOGRAPHIC_Z);
+
+        final PoseStack posestack = RenderSystem.getModelViewStack();
+        posestack.pushPose();
+        posestack.setIdentity();
+        posestack.translate(0.0D, 0.0D, 1000F - ForgeHooksClient.getGuiFarPlane());
+        RenderSystem.applyModelViewMatrix();
+        Lighting.setupFor3DItems();
+
+        // Render - scale up from 16x16 to fill the image
+        final float scale = size / 16.0f;
+        final GuiGraphics guiGraphics = new GuiGraphics(mc, mc.renderBuffers().bufferSource());
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().scale(scale, scale, scale);
+        guiGraphics.renderFakeItem(stack, 0, 0);
+        guiGraphics.pose().popPose();
+        guiGraphics.flush();
+
+        // Read pixels
+        try (final NativeImage image = new NativeImage(size, size, false))
+        {
+            RenderSystem.bindTexture(renderTarget.getColorTextureId());
+            image.downloadTexture(0, false);
+            image.flipY();
+
+            renderTarget.unbindWrite();
+            mc.getMainRenderTarget().bindWrite(true);
+            renderTarget.destroyBuffers();
+
+            return image.asByteArray();
+        }
+        catch (IOException e)
+        {
+            LOGGER.error("Error rendering item image", e);
+            renderTarget.unbindWrite();
+            mc.getMainRenderTarget().bindWrite(true);
+            renderTarget.destroyBuffers();
+            return null;
+        }
+    }
+
+    /* COMMENTED OUT - old code with cropping/scaling
+    public static byte[] renderItemToImage_OLD(final ItemStack stack, final int maxSize)
     {
         if (stack.isEmpty())
         {
@@ -247,9 +303,6 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
         }
     }
 
-    /**
-     * Samples an image using bilinear interpolation for smoother downscaling.
-     */
     private static int sampleBilinear(final NativeImage image, final float x, final float y, final int renderSize)
     {
         final int x0 = (int) Math.floor(x);
@@ -260,13 +313,11 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
         final float xFrac = x - x0;
         final float yFrac = y - y0;
 
-        // Get the four neighboring pixels (with bounds checking)
         final int p00 = getPixelSafe(image, x0, y0, renderSize);
         final int p10 = getPixelSafe(image, x1, y0, renderSize);
         final int p01 = getPixelSafe(image, x0, y1, renderSize);
         final int p11 = getPixelSafe(image, x1, y1, renderSize);
 
-        // Interpolate each channel separately
         final int r = bilinearInterpolateChannel(p00, p10, p01, p11, xFrac, yFrac, 0);
         final int g = bilinearInterpolateChannel(p00, p10, p01, p11, xFrac, yFrac, 8);
         final int b = bilinearInterpolateChannel(p00, p10, p01, p11, xFrac, yFrac, 16);
@@ -275,21 +326,15 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
         return (a << 24) | (b << 16) | (g << 8) | r;
     }
 
-    /**
-     * Gets a pixel from the image with bounds checking.
-     */
     private static int getPixelSafe(final NativeImage image, final int x, final int y, final int size)
     {
         if (x < 0 || x >= size || y < 0 || y >= size)
         {
-            return 0; // Transparent for out-of-bounds
+            return 0;
         }
         return image.getPixelRGBA(x, y);
     }
 
-    /**
-     * Performs bilinear interpolation on a single color channel.
-     */
     private static int bilinearInterpolateChannel(
         final int p00, final int p10, final int p01, final int p11,
         final float xFrac, final float yFrac, final int shift)
@@ -299,11 +344,11 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
         final int c01 = (p01 >> shift) & 0xFF;
         final int c11 = (p11 >> shift) & 0xFF;
 
-        // Bilinear interpolation formula
         final float top = c00 + xFrac * (c10 - c00);
         final float bottom = c01 + xFrac * (c11 - c01);
         final float result = top + yFrac * (bottom - top);
 
         return Math.min(255, Math.max(0, Math.round(result)));
     }
+    */
 }
