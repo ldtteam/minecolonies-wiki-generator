@@ -93,7 +93,12 @@ public final class DataGeneratorManager<L>
             deletePath(generatorOutputPath);
 
             final DataGeneratorOptions<L> options = new DataGeneratorOptions<>(generatorOutputPath, GSON, level);
-            futures.add(generator.generate(options));
+            futures.add(generator.generate(options).whenComplete((result, throwable) -> {
+                if (throwable != null)
+                {
+                    LOGGER.error("Generator '{}' failed with exception:", generator.getName(), throwable);
+                }
+            }));
         }
 
         allGeneratorsFuture = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
