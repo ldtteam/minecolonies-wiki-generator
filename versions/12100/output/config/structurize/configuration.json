@@ -1,0 +1,231 @@
+{
+  "name": "Structurize",
+  "types": [
+    {
+      "type": "CLIENT",
+      "values": [
+        {
+          "type": "category",
+          "name": "blueprint",
+          "children": [
+            {
+              "type": "category",
+              "name": "renderer",
+              "children": [
+                {
+                  "type": "config",
+                  "name": "light_level",
+                  "value-type": "number",
+                  "defaultValue": 15,
+                  "description": "structurize.config.light_level",
+                  "comment": "-1 for same as current vanilla world, 0 to 15 (min to max) for static light level ",
+                  "min": -1.0,
+                  "max": 15.0,
+                  "needsRestart": false
+                },
+                {
+                  "type": "config",
+                  "name": "render_placeholders_nice",
+                  "value-type": "boolean",
+                  "defaultValue": false,
+                  "description": "structurize.config.render_placeholders_nice",
+                  "comment": "If disabled show placeholders as normal blocks, if enabled render: any (light) -\u003e nothing, fluid (blue) -\u003e dimension default fluid, solid (brown) -\u003e worldgen block, tag (transparent) -\u003e content block. Fluid and solid only work in singleplayer/for LAN owner, else it\u0027s just best guess. Currently without auto-updating",
+                  "needsRestart": false
+                },
+                {
+                  "type": "config",
+                  "name": "share_previews",
+                  "value-type": "boolean",
+                  "defaultValue": false,
+                  "description": "structurize.config.share_previews",
+                  "comment": "Enabling this will send most of your active previews to nearby players",
+                  "needsRestart": false
+                },
+                {
+                  "type": "config",
+                  "name": "transparency",
+                  "value-type": "number",
+                  "defaultValue": -1.0,
+                  "description": "structurize.config.transparency",
+                  "comment": "From 0 (transparent) to 1 (opaque). ALPHA FEATURE, reported bugs may not receive fix. (Minus values also mean disabled) ",
+                  "min": -1.0,
+                  "max": 1.0,
+                  "needsRestart": false
+                },
+                {
+                  "type": "config",
+                  "name": "see_shared_previews",
+                  "value-type": "boolean",
+                  "defaultValue": false,
+                  "description": "structurize.config.see_shared_previews",
+                  "comment": "Once enabled you will see previews from other players within sensible distance",
+                  "needsRestart": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "scan_tool_scrolling",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "structurize.config.scan_tool_scrolling",
+              "comment": "Sneak+scroll on the hotbar switches scan tool slots",
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "SERVER",
+      "values": [
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "ignoreSchematicsFromJar",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "structurize.config.ignoreSchematicsFromJar",
+              "comment": "Should the default schematics be ignored (from the jar)?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "allowPlayerSchematics",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "structurize.config.allowPlayerSchematics",
+              "comment": "Should player-made schematics be allowed?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxOperationsPerTick",
+              "value-type": "number",
+              "defaultValue": 1000,
+              "description": "structurize.config.maxOperationsPerTick",
+              "comment": "Max world operations per tick (max blocks to place, remove, or replace). ",
+              "min": 0.0,
+              "max": 100000.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxCachedChanges",
+              "value-type": "number",
+              "defaultValue": 50,
+              "description": "structurize.config.maxCachedChanges",
+              "comment": "Max amount of undos saved. A higher number requires more memory. ",
+              "min": 0.0,
+              "max": 250.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "iteratorType",
+              "value-type": "string",
+              "defaultValue": "default",
+              "description": "structurize.config.iteratorType",
+              "comment": "Currently supports \u0027default\u0027, \u0027inwardcircle\u0027, \u0027hilbert\u0027, \u0027random\u0027 and \u0027inwardcircleheight1\u0027 to \u0027inwardcircleheight4\u0027",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxBlocksChecked",
+              "value-type": "number",
+              "defaultValue": 1000,
+              "description": "structurize.config.maxBlocksChecked",
+              "comment": "Max amount of blocks checked by a possible worker. ",
+              "min": 0.0,
+              "max": 100000.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "schematicBlockLimit",
+              "value-type": "number",
+              "defaultValue": 100000,
+              "description": "structurize.config.schematicBlockLimit",
+              "comment": "How many block at most can be inside one scanned blueprint. ",
+              "min": 1000.0,
+              "max": 1000000.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxCachedSchematics",
+              "value-type": "number",
+              "defaultValue": 100,
+              "description": "structurize.config.maxCachedSchematics",
+              "comment": "Max amount of schematics to be cached on the server. ",
+              "min": 0.0,
+              "max": 100000.0,
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "teleport",
+          "children": [
+            {
+              "type": "config",
+              "name": "teleportAllowed",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "structurize.config.teleportAllowed",
+              "comment": "If creative-mode players can use the scan tool to teleport to/from their builds.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "teleportBuildDistance",
+              "value-type": "number",
+              "defaultValue": 3,
+              "description": "structurize.config.teleportBuildDistance",
+              "comment": "When teleporting to a build, land this far away from it. ",
+              "min": 1.0,
+              "max": 16.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "teleportBuildDirection",
+              "value-type": "enum",
+              "defaultValue": "SOUTH",
+              "description": "structurize.config.teleportBuildDirection",
+              "comment": "When teleporting to a build, land on this side of it. ",
+              "enum": [
+                "DOWN",
+                "UP",
+                "NORTH",
+                "SOUTH",
+                "WEST",
+                "EAST"
+              ],
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "teleportSafety",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "structurize.config.teleportSafety",
+              "comment": "Allow teleporting a little distance away if the landing area is blocked; disable to teleport exactly to target.",
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

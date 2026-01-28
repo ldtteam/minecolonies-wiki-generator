@@ -1,0 +1,749 @@
+{
+  "name": "MineColonies",
+  "types": [
+    {
+      "type": "COMMON",
+      "values": [
+        {
+          "type": "category",
+          "name": "requestsystem",
+          "children": [
+            {
+              "type": "config",
+              "name": "enabledebuglogging",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.enabledebuglogging",
+              "comment": "Should the request system show debug information in the debug.log? Useful if malfunctioning.",
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "generatesupplyloot",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.generatesupplyloot",
+              "comment": "Whether to generate supply ships and camps in loot chests.",
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "SERVER",
+      "values": [
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "diseasemodifier",
+              "value-type": "number",
+              "defaultValue": 5,
+              "description": "minecolonies.config.diseasemodifier",
+              "comment": "How common diseases are. 1 \u003d Very common, 100 \u003d extremely rare.",
+              "min": 1.0,
+              "max": 100.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxcitizenpercolony",
+              "value-type": "number",
+              "defaultValue": 250,
+              "description": "minecolonies.config.maxcitizenpercolony",
+              "comment": "Max citizens in one colony.",
+              "min": 25.0,
+              "max": 500.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "workersalwaysworkinrain",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.workersalwaysworkinrain",
+              "comment": "Should workers work during the rain?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "alwaysrendernametag",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.alwaysrendernametag",
+              "comment": "Should citizen name tags be rendered?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "skyraiders",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.skyraiders",
+              "comment": "Raiders will spawn in the sky if this is enabled",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "enableindevelopmentfeatures",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.enableindevelopmentfeatures",
+              "comment": "Should development features be enabled (might be buggy)?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "nosupplyplacementrestrictions",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.nosupplyplacementrestrictions",
+              "comment": "Disables supply camp placing restrictions, intended for skyworlds and similar",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "allowinfinitesupplychests",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.allowinfinitesupplychests",
+              "comment": "Should players be able to place an infinite amount of supply camps/ships?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "loadtime",
+              "value-type": "number",
+              "defaultValue": 10,
+              "description": "minecolonies.config.loadtime",
+              "comment": "Set how long chunks stay loaded after player leaves, does not persist through restarts. Default: 10min",
+              "min": 1.0,
+              "max": 1440.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "allowotherdimcolonies",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.allowotherdimcolonies",
+              "comment": "Should colonies in other dimensions be allowed?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "luckyblockchance",
+              "value-type": "number",
+              "defaultValue": 1,
+              "description": "minecolonies.config.luckyblockchance",
+              "comment": "Chance for the Miner to get an ore when mining cobblestone or stone (by default, can be expanded with datapacks to other materials). This is a percentage. (To change which ores the Miner can find, see \"List of Lucky Ores\".)",
+              "min": 0.0,
+              "max": 100.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "initialcitizenamount",
+              "value-type": "number",
+              "defaultValue": 4,
+              "description": "minecolonies.config.initialcitizenamount",
+              "comment": "Amount of initial citizens.",
+              "min": 1.0,
+              "max": 10.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "colonyloadstrictness",
+              "value-type": "number",
+              "defaultValue": 3,
+              "description": "minecolonies.config.colonyloadstrictness",
+              "comment": "This controls how many chunks are loaded with the \"Chunk Load Colony\" option. The higher this value, the fewer chunks will be loaded. (The innermost chunks will be loaded first.) 1 \u003d load all claimed chunks.",
+              "min": 1.0,
+              "max": 15.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "allowinfinitecolonies",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.allowinfinitecolonies",
+              "comment": "Should players be allowed to abandon their colony to create a new one easily? Note: This is buggy!",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "minthleveltoteleport",
+              "value-type": "number",
+              "defaultValue": 3,
+              "description": "minecolonies.config.minthleveltoteleport",
+              "comment": "The minimum level a Town Hall has to be to allow teleportation to allied colonies.",
+              "min": 0.0,
+              "max": 5.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxtreesize",
+              "value-type": "number",
+              "defaultValue": 400,
+              "description": "minecolonies.config.maxtreesize",
+              "comment": "Max log count in one tree for the Forester to check during their tree search.",
+              "min": 1.0,
+              "max": 1000.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "forceloadcolony",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.forceloadcolony",
+              "comment": "If part of the colony is loaded by an owner/officer, should the colony be kept loaded? (Set how many chunks are loaded with the \"Colony Chunk Loading Strictness\" option.)",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "foodmodifier",
+              "value-type": "number",
+              "defaultValue": 1.0,
+              "description": "minecolonies.config.foodmodifier",
+              "comment": "Food consumption modifier.",
+              "min": 0.1,
+              "max": 100.0,
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "research",
+          "children": [
+            {
+              "type": "config",
+              "name": "researchcreativecompletion",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.researchcreativecompletion",
+              "comment": "Allows automatic and (near) instant completion of research for players in creative mode. If false, creative players will still be able to begin researches, but will have normal progress rates.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "researchdebuglog",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.researchdebuglog",
+              "comment": "Significantly increases the amount of information related to research datapacks that is logged during the world load.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "researchresetcost",
+              "value-type": "string",
+              "defaultValue": "[minecolonies:ancienttome:1]",
+              "description": "minecolonies.config.researchresetcost",
+              "comment": "A list of items to charge players when undoing an already-completed research.",
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "claims",
+          "children": [
+            {
+              "type": "config",
+              "name": "initialColonySize",
+              "value-type": "number",
+              "defaultValue": 4,
+              "description": "minecolonies.config.initialColonySize",
+              "comment": "Initial claim size for a colony. This is the radius, measured in chunks.",
+              "min": 1.0,
+              "max": 15.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxdistancefromworldspawn",
+              "value-type": "number",
+              "defaultValue": 30000,
+              "description": "minecolonies.config.maxdistancefromworldspawn",
+              "comment": "Max distance (in blocks) from world spawn for a colony.",
+              "min": 1000.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "mindistancefromworldspawn",
+              "value-type": "number",
+              "defaultValue": 0,
+              "description": "minecolonies.config.mindistancefromworldspawn",
+              "comment": "Min distance (in blocks) from world spawn for a colony.",
+              "min": 0.0,
+              "max": 1000.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "minColonyDistance",
+              "value-type": "number",
+              "defaultValue": 8,
+              "description": "minecolonies.config.minColonyDistance",
+              "comment": "The minimum distance (in chunks) between colonies.",
+              "min": 1.0,
+              "max": 200.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxColonySize",
+              "value-type": "number",
+              "defaultValue": 20,
+              "description": "minecolonies.config.maxColonySize",
+              "comment": "Maximum claim range for a colony. This is the radius, measured in chunks.",
+              "min": 1.0,
+              "max": 250.0,
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "combat",
+          "children": [
+            {
+              "type": "config",
+              "name": "dobarbariansspawn",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.dobarbariansspawn",
+              "comment": "minecolonies.config.dobarbariansspawn.comment",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "mobattackcitizens",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.mobattackcitizens",
+              "comment": "Should mobs attack citizens?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "barbarianhordedifficulty",
+              "value-type": "number",
+              "defaultValue": 5,
+              "description": "minecolonies.config.barbarianhordedifficulty",
+              "comment": "minecolonies.config.barbarianhordedifficulty.comment",
+              "min": 0.0,
+              "max": 10.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "dobarbariansbreakthroughwalls",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.dobarbariansbreakthroughwalls",
+              "comment": "minecolonies.config.dobarbariansbreakthroughwalls.comment",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "pvp_mode",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.pvp_mode",
+              "comment": "Turn on MineColonies PVP mode (colonies can be destroyed and griefed under certain conditions).",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "shouldraiderbreakdoors",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.shouldraiderbreakdoors",
+              "comment": "minecolonies.config.shouldraiderbreakdoors.comment",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "guardhealthmult",
+              "value-type": "number",
+              "defaultValue": 1.0,
+              "description": "minecolonies.config.guardhealthmult",
+              "comment": "Health multiplier for all Guards.",
+              "min": 0.1,
+              "max": 5.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "guardDamageMultiplier",
+              "value-type": "number",
+              "defaultValue": 1.0,
+              "description": "minecolonies.config.guardDamageMultiplier",
+              "comment": "minecolonies.config.guarddamagemultiplier.comment",
+              "min": 0.1,
+              "max": 15.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "minimumnumberofnightsbetweenraids",
+              "value-type": "number",
+              "defaultValue": 10,
+              "description": "minecolonies.config.minimumnumberofnightsbetweenraids",
+              "comment": "The minimum number of nights between raids.",
+              "min": 1.0,
+              "max": 30.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "maxBarbarianSize",
+              "value-type": "number",
+              "defaultValue": 80,
+              "description": "minecolonies.config.maxBarbarianSize",
+              "comment": "minecolonies.config.maxbarbariansize.comment",
+              "min": 6.0,
+              "max": 400.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "averagenumberofnightsbetweenraids",
+              "value-type": "number",
+              "defaultValue": 14,
+              "description": "minecolonies.config.averagenumberofnightsbetweenraids",
+              "comment": "The average number of nights between raids.",
+              "min": 1.0,
+              "max": 50.0,
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "permissions",
+          "children": [
+            {
+              "type": "config",
+              "name": "permissioneventbypassminpermlevel",
+              "value-type": "number",
+              "defaultValue": 2,
+              "description": "minecolonies.config.permissioneventbypassminpermlevel",
+              "comment": "Disables colony permissions if player has a given permission level.",
+              "min": 0.0,
+              "max": 4.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "enablecolonyprotection",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.enablecolonyprotection",
+              "comment": "Should colony protection be enabled?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "turnoffexplosionsincolonies",
+              "value-type": "enum",
+              "defaultValue": "DAMAGE_ENTITIES",
+              "description": "minecolonies.config.turnoffexplosionsincolonies",
+              "comment": "Independent from the colony protection, should explosions be turned off inside colonies? DAMAGE_NOTHING prevents explosions completely. DAMAGE_PLAYERS, allows explosions to damage players and hostile mobs, but not blocks or neutral or friendly mobs. DAMAGE_ENTITIES allows damage to all entities. DAMAGE_EVERYTHING allows explosions to damage entities and blocks.",
+              "enum": [
+                "DAMAGE_NOTHING",
+                "DAMAGE_PLAYERS",
+                "DAMAGE_ENTITIES",
+                "DAMAGE_EVERYTHING"
+              ],
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "commands",
+          "children": [
+            {
+              "type": "config",
+              "name": "canplayerusekillcitizenscommand",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.canplayerusekillcitizenscommand",
+              "comment": "Should players be allowed to use the /mc citizens kill command?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayerusemodifycitizenscommand",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.canplayerusemodifycitizenscommand",
+              "comment": "Should players be allowed to use the /mc citizens modify command?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayeruseshowcolonyinfocommand",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.canplayeruseshowcolonyinfocommand",
+              "comment": "Should players be allowed to use the /mc colony info command?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayeruseaddofficercommand",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.canplayeruseaddofficercommand",
+              "comment": "Should players be allowed to use the /mc colony addOfficer command?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayerusecolonytpcommand",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.canplayerusecolonytpcommand",
+              "comment": "Should players be allowed to use the /mc colony teleport command?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayeruseallytownhallteleport",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.canplayeruseallytownhallteleport",
+              "comment": "Can players teleport to allied colonies?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayerusehometpcommand",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.canplayerusehometpcommand",
+              "comment": "Should players be allowed to use the /mc home command? Note: Only owners of the colony can use this command.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayeruseresetcommand",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.canplayeruseresetcommand",
+              "comment": "Should players be allowed to use the /mc colony requestsystem-reset command?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayerusertpcommand",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.canplayerusertpcommand",
+              "comment": "Should players be allowed to use the /mc rtp command?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "canplayerusedeletecolonycommand",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.canplayerusedeletecolonycommand",
+              "comment": "Should players be allowed to use the /mc colony delete command?",
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "compatibility",
+          "children": [
+            {
+              "type": "config",
+              "name": "auditcraftingtags",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.auditcraftingtags",
+              "comment": "When loading recipes, generate audit CSV files to help debug datapacks or extra mods.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "debuginventories",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.debuginventories",
+              "comment": "Enable inventory debugging.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "blueprintbuildmode",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.blueprintbuildmode",
+              "comment": "Turn this on if you\u0027re using this world for blueprint building and scanning.",
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "requestSystem",
+          "children": [
+            {
+              "type": "config",
+              "name": "creativeresolve",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.creativeresolve",
+              "comment": "Should the request system creatively resolve (if possible) when the player is required to resolve a request? This is a debugging tool and can take a very long time to resolve a request.",
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "debugging",
+          "children": [
+            {
+              "type": "config",
+              "name": "netherworkertakesdamage",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.netherworkertakesdamage",
+              "comment": "minecolonies.config.netherworkertakesdamage.comment",
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "pathfinding",
+          "children": [
+            {
+              "type": "config",
+              "name": "pathfindingdebugverbosity",
+              "value-type": "number",
+              "defaultValue": 0,
+              "description": "minecolonies.config.pathfindingdebugverbosity",
+              "comment": "Verbosity of pathfinding debug messages.",
+              "min": 0.0,
+              "max": 10.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "minimumrailstopath",
+              "value-type": "number",
+              "defaultValue": 8,
+              "description": "minecolonies.config.minimumrailstopath",
+              "comment": "Minimum number of consecutive rails for citizens to use them.",
+              "min": 5.0,
+              "max": 100.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "pathfindingmaxthreadcount",
+              "value-type": "number",
+              "defaultValue": 1,
+              "description": "minecolonies.config.pathfindingmaxthreadcount",
+              "comment": "Amount of additional threads to be used for pathfinding.",
+              "min": 1.0,
+              "max": 10.0,
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CLIENT",
+      "values": [
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "neighborbuildingrendering",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.neighborbuildingrendering",
+              "comment": "By default, when placing a schematic near other buildings, the already-placed buildings will show as if they were at level 5 and have a blue outline around them. You can disable that by setting this to false.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "holidayfeatures",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.holidayfeatures",
+              "comment": "Should special holiday content be displayed?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "enablecitizenvoices",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.enablecitizenvoices",
+              "comment": "minecolonies.config.enablecitizenvoices.comment",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "colonyteamborders",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.colonyteamborders",
+              "comment": "When true, the colony borders shown when holding the build tool will be in the colony\u0027s team color. When false, the colony you\u0027re inside will be white and any other colony will be red.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "neighborbuildingrange",
+              "value-type": "number",
+              "defaultValue": 4,
+              "description": "minecolonies.config.neighborbuildingrange",
+              "comment": "How close a building needs to be to another to be considered a neighbor, in blocks. -1 \u003d intersecting, 0 \u003d touching",
+              "min": -2.0,
+              "max": 16.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "buildgogglerange",
+              "value-type": "number",
+              "defaultValue": 50,
+              "description": "minecolonies.config.buildgogglerange",
+              "comment": "How close (in blocks) you need to be to see work orders while wearing the Build Goggles.",
+              "min": 1.0,
+              "max": 250.0,
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
