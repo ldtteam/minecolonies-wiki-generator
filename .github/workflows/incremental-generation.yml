@@ -47,8 +47,10 @@ jobs:
 
       - name: Update dependency versions
         id: update
+        env:
+          SECRET_CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
         run: |
-          ./gradlew updateDependencyVersions -Psecret_curseforge_api_key="${{ secrets.CURSEFORGE_API_KEY }}" 2>&1 | tee /tmp/update-output.txt
+          ./gradlew updateDependencyVersions -Psecret_curseforge_api_key="$SECRET_CURSEFORGE_API_KEY" 2>&1 | tee /tmp/update-output.txt
           if grep -q "Dependencies were updated" /tmp/update-output.txt; then
             echo "updated=true" >> $GITHUB_OUTPUT
           else
@@ -60,10 +62,11 @@ jobs:
         env:
           EXCLUDED_NAMESPACES: ${{ vars.EXCLUDED_NAMESPACES }}
           DISPLAY: ':99'
+          SECRET_CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
         run: |
           Xvfb $DISPLAY -screen 0 1024x768x24 &
           sleep 2
-          ./gradlew runClient -Psecret_curseforge_api_key="${{ secrets.CURSEFORGE_API_KEY }}"
+          ./gradlew runClient -Psecret_curseforge_api_key="$SECRET_CURSEFORGE_API_KEY"
 
       - name: Commit generated output
         if: steps.update.outputs.updated == 'true'
