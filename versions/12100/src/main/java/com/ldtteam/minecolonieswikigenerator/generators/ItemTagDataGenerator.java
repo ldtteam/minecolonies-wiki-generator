@@ -46,6 +46,10 @@ public class ItemTagDataGenerator extends DataGenerator<ClientLevel>
 
             final TagLoader<Holder<Item>> tagloader = new TagLoader<>(BuiltInRegistries.ITEM::getHolder, Registries.tagsDirPath(BuiltInRegistries.ITEM.key()));
             tagloader.loadAndBuild(Minecraft.getInstance().getSingleplayerServer().getResourceManager()).forEach((key, value) -> {
+                if (options.isNamespaceExcluded(key.getNamespace()))
+                {
+                    return;
+                }
                 try
                 {
                     generateItemTagData(options, key, value);

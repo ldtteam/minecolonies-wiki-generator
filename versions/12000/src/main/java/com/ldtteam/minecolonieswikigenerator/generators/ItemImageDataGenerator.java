@@ -55,6 +55,10 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
     protected void queueTasks(final Consumer<Runnable> register, final DataGeneratorOptions<ClientLevel> options)
     {
         ForgeRegistries.ITEMS.getEntries().forEach(entry -> {
+            if (options.isNamespaceExcluded(entry.getKey().location().getNamespace()))
+            {
+                return;
+            }
             final Item item = entry.getValue();
             final ResourceLocation itemId = entry.getKey().location();
             register.accept(() -> generateItemImage(options, itemId, item));

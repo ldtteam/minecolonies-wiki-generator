@@ -40,6 +40,10 @@ public class ItemDataGenerator extends DataGenerator<ClientLevel>
             final AtomicInteger count = new AtomicInteger(0);
 
             BuiltInRegistries.ITEM.entrySet().forEach(entry -> {
+                if (options.isNamespaceExcluded(entry.getKey().location().getNamespace()))
+                {
+                    return;
+                }
                 try
                 {
                     generateItemData(options, entry.getKey().location(), entry.getValue());

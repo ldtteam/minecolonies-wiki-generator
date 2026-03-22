@@ -41,6 +41,10 @@ public class BlockDataGenerator extends DataGenerator<ClientLevel>
             final AtomicInteger count = new AtomicInteger(0);
 
             ForgeRegistries.BLOCKS.getEntries().forEach(entry -> {
+                if (options.isNamespaceExcluded(entry.getKey().location().getNamespace()))
+                {
+                    return;
+                }
                 try
                 {
                     generateBlockData(options, entry.getKey().location(), entry.getValue());

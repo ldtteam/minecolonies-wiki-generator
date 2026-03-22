@@ -32,6 +32,8 @@ public final class DataGeneratorManager<L>
 
     private final Deque<LongRunningDataGenerator<L>> longRunningGenerators;
 
+    private final Set<String> excludedNamespaces;
+
     private final AtomicBoolean initialized = new AtomicBoolean(false);
     private final AtomicBoolean completed   = new AtomicBoolean(false);
 
@@ -43,6 +45,11 @@ public final class DataGeneratorManager<L>
         this.generators = entrypoint.getGenerators();
         this.longRunningGenerators =
             new ArrayDeque<>(generators.activeGenerators().stream().filter(LongRunningDataGenerator.class::isInstance).map(g -> (LongRunningDataGenerator<L>) g).toList());
+        this.excludedNamespaces = DataGeneratorOptions.readExcludedNamespaces();
+        if (!excludedNamespaces.isEmpty())
+        {
+            LOGGER.info("Excluding namespaces from generation: {}", excludedNamespaces);
+        }
     }
 
     public void tick()
@@ -92,7 +99,7 @@ public final class DataGeneratorManager<L>
             final Path generatorOutputPath = generator.getGeneratorOutputPath(this.entrypoint.getOutputPath());
             deletePath(generatorOutputPath);
 
-            final DataGeneratorOptions<L> options = new DataGeneratorOptions<>(generatorOutputPath, GSON, level);
+            final DataGeneratorOptions<L> options = new DataGeneratorOptions<>(generatorOutputPath, GSON, level, excludedNamespaces);
             futures.add(generator.generate(options).whenComplete((result, throwable) -> {
                 if (throwable != null)
                 {

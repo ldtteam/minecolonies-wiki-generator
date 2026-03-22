@@ -46,6 +46,10 @@ public class BlockStateDataGenerator extends DataGenerator<ClientLevel>
             final AtomicInteger count = new AtomicInteger(0);
 
             BuiltInRegistries.BLOCK.entrySet().forEach(entry -> {
+                if (options.isNamespaceExcluded(entry.getKey().location().getNamespace()))
+                {
+                    return;
+                }
                 try
                 {
                     generateBlockStatesData(options, entry.getKey().location(), entry.getValue());

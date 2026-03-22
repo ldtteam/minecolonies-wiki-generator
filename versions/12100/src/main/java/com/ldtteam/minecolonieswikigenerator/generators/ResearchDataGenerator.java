@@ -55,6 +55,10 @@ public class ResearchDataGenerator extends DataGenerator<ClientLevel>
 
             final FileToIdConverter research = FileToIdConverter.json("researches");
             research.listMatchingResources(Minecraft.getInstance().getSingleplayerServer().getResourceManager()).forEach((key, value) -> {
+                if (options.isNamespaceExcluded(research.fileToId(key).getNamespace()))
+                {
+                    return;
+                }
                 try
                 {
                     final boolean isValidFile = generateResearchData(options, research.fileToId(key), value);
