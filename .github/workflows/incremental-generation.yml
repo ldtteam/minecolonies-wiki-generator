@@ -1,0 +1,77 @@
+name: Incremental Wiki Data Generation
+
+on:
+  schedule:
+    - cron: '0 20 * * 0'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Set up Gradle cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.gradle/loom-cache
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/gradle.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      - name: Create secret.gradle.properties
+        run: echo "secret_curseforge_api_key=${{ secrets.CURSEFORGE_API_KEY }}" > secret.gradle.properties
+
+      - name: Install virtual display dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y xvfb libgl1-mesa-dri libglx-mesa0 mesa-utils
+
+      - name: Grant Gradle wrapper execute permission
+        run: chmod +x gradlew
+
+      - name: Update dependency versions
+        id: update
+        run: |
+          ./gradlew updateDependencyVersions 2>&1 | tee /tmp/update-output.txt
+          if grep -q "Dependencies were updated" /tmp/update-output.txt; then
+            echo "updated=true" >> $GITHUB_OUTPUT
+          else
+            echo "updated=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run generators
+        if: steps.update.outputs.updated == 'true'
+        env:
+          EXCLUDED_NAMESPACES: ${{ vars.EXCLUDED_NAMESPACES }}
+          DISPLAY: ':99'
+        run: |
+          Xvfb $DISPLAY -screen 0 1024x768x24 &
+          sleep 2
+          ./gradlew runClient
+
+      - name: Commit generated output
+        if: steps.update.outputs.updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add versions/*/output gradle.properties versions/*/gradle.properties
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: incremental wiki data generation [skip ci]"
+            git push
+          fi

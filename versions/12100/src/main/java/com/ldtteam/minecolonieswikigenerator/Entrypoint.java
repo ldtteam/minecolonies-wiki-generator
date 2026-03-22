@@ -4,6 +4,14 @@ import com.ldtteam.minecolonieswikigenerator.generators.*;
 import com.ldtteam.minecolonieswikigenerator.research.ResearchObjectType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.LevelSettings;
+import net.minecraft.world.level.WorldDataConfiguration;
+import net.minecraft.world.level.levelgen.WorldOptions;
+import net.minecraft.world.level.levelgen.presets.WorldPresets;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -11,11 +19,16 @@ import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.common.NeoForge;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Mod(Constants.MOD_ID)
 public class Entrypoint extends RootEntrypoint<ClientLevel>
 {
+    private static final String DATAGEN_WORLD = "datagen_world";
+    private final AtomicBoolean worldCreationTriggered = new AtomicBoolean(false);
+
     public Entrypoint(final Dist dist)
     {
         super();
@@ -31,10 +44,39 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
     {
         final Minecraft mc = Minecraft.getInstance();
 
+        // If no datagen world exists yet, create it and wait for it to load
+        if (mc.level == null && worldCreationTriggered.compareAndSet(false, true))
+        {
+            final Path worldPath = mc.getLevelSource().getBaseDir().resolve(DATAGEN_WORLD);
+            if (!Files.exists(worldPath))
+            {
+                final LevelSettings settings = new LevelSettings(
+                    DATAGEN_WORLD,
+                    GameType.CREATIVE,
+                    false,
+                    Difficulty.PEACEFUL,
+                    true,
+                    new GameRules(),
+                    WorldDataConfiguration.DEFAULT
+                );
+                mc.createWorldOpenFlows().createFreshLevel(
+                    DATAGEN_WORLD,
+                    settings,
+                    WorldOptions.defaultWithRandomSeed(),
+                    registryAccess -> registryAccess.registryOrThrow(Registries.WORLD_PRESET)
+                        .getHolderOrThrow(WorldPresets.FLAT).value().createWorldDimensions(),
+                    null
+                );
+            }
+            return;
+        }
+
+        // Wait for the game to be fully loaded
         if (mc.level == null || mc.player == null)
         {
             return;
         }
+
         this.tick();
     }
 

@@ -42,6 +42,10 @@ public class CitizenNamesDataGenerator extends DataGenerator<ClientLevel>
 
             final FileToIdConverter citizenNames = FileToIdConverter.json("citizennames");
             citizenNames.listMatchingResources(Minecraft.getInstance().getSingleplayerServer().getResourceManager()).forEach((key, value) -> {
+                if (options.isNamespaceExcluded(citizenNames.fileToId(key).getNamespace()))
+                {
+                    return;
+                }
                 try
                 {
                     generateCitizenNamesData(options, citizenNames.fileToId(key), value);

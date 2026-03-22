@@ -59,7 +59,7 @@ public class ConfigurationDataGenerator extends DataGenerator<ClientLevel>
 
             final Map<String, Map<ModConfig.Type, Map<LinkedList<String>, ForgeConfigSpec.ValueSpec>>> fullConfiguration = new HashMap<>();
 
-            ConfigTracker.INSTANCE.configSets().values().stream().flatMap(Collection::stream).filter(config -> !config.getModId().equals("forge")).forEach(config -> {
+            ConfigTracker.INSTANCE.configSets().values().stream().flatMap(Collection::stream).filter(config -> !options.isNamespaceExcluded(config.getModId())).forEach(config -> {
                 if (config.getSpec() instanceof ForgeConfigSpec configSpec)
                 {
                     collectConfig(new LinkedList<>(), configSpec.getSpec(), (key, valueSpec) -> {

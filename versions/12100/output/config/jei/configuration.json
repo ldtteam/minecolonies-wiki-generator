@@ -1,0 +1,40 @@
+{
+  "name": "Just Enough Items",
+  "types": [
+    {
+      "type": "SERVER",
+      "values": [
+        {
+          "type": "category",
+          "name": "cheat mode",
+          "children": [
+            {
+              "type": "config",
+              "name": "enableCheatModeForOp",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "comment": "Enable the cheat mode for players who have an operator status (/op)",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "enableCheatModeForCreative",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "comment": "Enable the cheat mode for players who are in the creative mode",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "enableCheatModeForGive",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "comment": "Enable the cheat mode for players who can use the \"/give\" command",
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

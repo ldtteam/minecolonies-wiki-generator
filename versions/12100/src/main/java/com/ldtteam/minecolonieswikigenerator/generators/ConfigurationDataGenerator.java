@@ -59,7 +59,7 @@ public class ConfigurationDataGenerator extends DataGenerator<ClientLevel>
 
             final Map<String, Map<ModConfig.Type, Map<LinkedList<String>, ModConfigSpec.ValueSpec>>> fullConfiguration = new HashMap<>();
 
-            ModList.get().getMods().stream().flatMap(m -> ModConfigs.getModConfigs(m.getModId()).stream()).filter(config -> !config.getModId().equals("neoforge") && !config.getModId().equals("jei")).forEach(config -> {
+            ModList.get().getMods().stream().flatMap(m -> ModConfigs.getModConfigs(m.getModId()).stream()).filter(config -> !options.isNamespaceExcluded(config.getModId())).forEach(config -> {
                 if (config.getSpec() instanceof ModConfigSpec configSpec)
                 {
                     collectConfig(new LinkedList<>(), configSpec.getSpec(), (key, valueSpec) -> {

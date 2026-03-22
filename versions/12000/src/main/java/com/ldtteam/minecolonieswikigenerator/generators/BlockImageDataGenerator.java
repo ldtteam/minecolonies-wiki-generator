@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.texture.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
@@ -67,6 +67,10 @@ public class BlockImageDataGenerator extends LongRunningDataGenerator<ClientLeve
     protected void queueTasks(final Consumer<Runnable> register, final DataGeneratorOptions<ClientLevel> options)
     {
         ForgeRegistries.BLOCKS.getEntries().forEach(entry -> {
+            if (options.isNamespaceExcluded(entry.getKey().location().getNamespace()))
+            {
+                return;
+            }
             final Block block = entry.getValue();
             final ResourceLocation blockId = entry.getKey().location();
 
@@ -162,6 +166,9 @@ public class BlockImageDataGenerator extends LongRunningDataGenerator<ClientLeve
 
         try
         {
+            // Reset all animated textures to frame 0 so every block is rendered consistently
+            resetAnimatedTextures(mc);
+
             // Render block with cutout render type for transparency support without ambient occlusion darkening
             // Use FULL_BRIGHT for maximum lighting (15 sky light + 15 block light)
             mc.getBlockRenderer().renderSingleBlock(state, poseStack, bufferSource, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, ModelData.EMPTY, RenderType.cutout());
@@ -250,6 +257,30 @@ public class BlockImageDataGenerator extends LongRunningDataGenerator<ClientLeve
             renderTarget.unbindWrite();
             Minecraft.getInstance().getMainRenderTarget().bindWrite(true);
             renderTarget.destroyBuffers();
+        }
+    }
+
+    /**
+     * Resets all animated textures in the block atlas to frame 0.
+     * This ensures every block is rendered at the same animation frame regardless of game time.
+     */
+    private static void resetAnimatedTextures(final Minecraft mc)
+    {
+        final AbstractTexture texture = mc.getTextureManager().getTexture(InventoryMenu.BLOCK_ATLAS);
+        if (!(texture instanceof TextureAtlas atlas))
+        {
+            return;
+        }
+
+        atlas.bind();
+        for (final TextureAtlasSprite.Ticker ticker : atlas.animatedTextures)
+        {
+            if (ticker instanceof SpriteContents.Ticker spriteTicker)
+            {
+                spriteTicker.frame = 0;
+                spriteTicker.subFrame = 0;
+            }
+            ticker.tickAndUpload();
         }
     }
 

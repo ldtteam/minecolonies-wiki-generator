@@ -42,6 +42,10 @@ public class CrafterRecipeDataGenerator extends DataGenerator<ClientLevel>
 
             final FileToIdConverter crafterRecipes = FileToIdConverter.json("crafterrecipes");
             crafterRecipes.listMatchingResources(Minecraft.getInstance().getSingleplayerServer().getResourceManager()).forEach((key, value) -> {
+                if (options.isNamespaceExcluded(crafterRecipes.fileToId(key).getNamespace()))
+                {
+                    return;
+                }
                 try
                 {
                     generateCrafterRecipeData(options, crafterRecipes.fileToId(key), value);

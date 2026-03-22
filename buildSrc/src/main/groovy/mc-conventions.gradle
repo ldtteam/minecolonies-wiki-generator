@@ -1,3 +1,6 @@
+import groovy.json.JsonSlurper
+import java.util.regex.Pattern
+
 plugins {
     id 'java-conventions'
     id 'loader-conventions'
@@ -56,3 +59,167 @@ tasks.named('jar', Jar).configure {
         ])
     }
 }
+
+// ============================================================
+// CurseForge Dependency Update Tasks
+//
+// Usage (single subproject):
+//   ./gradlew :versions:12000:checkDependencyVersions
+//   ./gradlew :versions:12000:updateDependencyVersions
+//
+// Usage (all subprojects):
+//   ./gradlew checkDependencyVersions
+//   ./gradlew updateDependencyVersions
+// ============================================================
+
+ext.curseforgeModIds = [
+    'minecolonies'    : 245506,
+    'structurize'     : 298744,
+    'domum_ornamentum': 527361,
+    'blockui'         : 522992
+]
+
+def loadApiKey = {
+    def secretFile = rootProject.file('secret.gradle.properties')
+    if (!secretFile.exists()) {
+        throw new GradleException(
+            "secret.gradle.properties not found.\n" +
+            "Create it in the project root with:\n" +
+            "  secret_curseforge_api_key=YOUR_API_KEY\n\n" +
+            "Get your API key from: https://console.curseforge.com/"
+        )
+    }
+    def props = new Properties()
+    secretFile.withInputStream { props.load(it) }
+    def apiKey = props.getProperty('secret_curseforge_api_key')
+    if (!apiKey) {
+        throw new GradleException(
+            "Invalid or missing secret_curseforge_api_key in secret.gradle.properties\n" +
+            "Get your API key from: https://console.curseforge.com/"
+        )
+    }
+    return apiKey
+}
+
+def fetchModInfo = { int modId, String apiKey ->
+    def url = URI.create("https://api.curseforge.com/v1/mods/${modId}").toURL()
+    def response = url.getText(
+        connectTimeout: 10000,
+        readTimeout: 10000,
+        requestProperties: ['x-api-key': apiKey, 'Accept': 'application/json']
+    )
+    return new JsonSlurper().parseText(response).data
+}
+
+def findLatestFileIndex = { List<Map> indexes, String gameVersion ->
+    def filtered = indexes.findAll { it.gameVersion == gameVersion }
+    if (filtered.isEmpty()) return null
+    // Sort by fileId descending — CurseForge file IDs are sequential so highest = newest
+    filtered.sort { a, b -> (b.fileId as int) <=> (a.fileId as int) }
+    return filtered.first()
+}
+
+def extractVersionFromFileName = { String fileName, String modName ->
+    def name = fileName
+        .replaceAll(/\.jar$/, '')
+        .replaceAll(/-universal$/, '')
+        .replaceAll(/-main$/, '')
+
+    def variants = [modName, modName.replace('_', '-'), modName.replace('_', ''), modName.replace('-', '_')].unique()
+    for (variant in variants) {
+        def pattern = /^${Pattern.quote(variant)}-/
+        if (name =~ pattern) return name.replaceFirst(pattern, '')
+    }
+
+    logger.warn("Could not extract version from filename: ${fileName}")
+    return name
+}
+
+def getReleaseTypeName = { int releaseType ->
+    switch (releaseType) {
+        case 1: return 'Release'
+        case 2: return 'Beta'
+        case 3: return 'Alpha'
+        default: return 'Unknown'
+    }
+}
+
+def collectAndApplyUpdates = {
+    def apiKey = loadApiKey()
+    def minecraftVersion = project.minecraft_version
+    def propsFile = project.file('gradle.properties')
+    def fileProps = new Properties()
+    propsFile.withInputStream { fileProps.load(it) }
+    def updates = []
+
+    logger.lifecycle("Fetching mod information from CurseForge...")
+    curseforgeModIds.each { modName, modId ->
+        def propName = "${modName}_version"
+        def currentVersion = fileProps.getProperty(propName)
+
+        if (currentVersion == null) {
+            logger.info("  Skipping ${modName}: property '${propName}' not found")
+            return
+        }
+
+        try {
+            logger.lifecycle("  Fetching ${modName}...")
+            def modInfo = fetchModInfo(modId, apiKey)
+            def indexes = modInfo.latestFilesIndexes as List<Map>
+            def latestIndex = findLatestFileIndex(indexes, minecraftVersion)
+
+            if (!latestIndex) {
+                logger.warn("  ${modName}: No compatible file found for MC ${minecraftVersion}")
+                return
+            }
+
+            def newVersion = extractVersionFromFileName(latestIndex.filename as String, modName)
+            def releaseTypeName = getReleaseTypeName(latestIndex.releaseType as int)
+
+            if (currentVersion != newVersion) {
+                logger.lifecycle("  ${modName}: ${currentVersion} -> ${newVersion} (${releaseTypeName})")
+
+                def pattern = /^${Pattern.quote(propName)}=.*/
+                propsFile.text = propsFile.readLines()
+                    .collect { line -> line =~ pattern ? "${propName}=${newVersion}" : line }
+                    .join(System.lineSeparator()) + System.lineSeparator()
+
+                updates << [mod: modName, current: currentVersion, latest: newVersion, releaseType: releaseTypeName]
+            } else {
+                logger.info("  ${modName}: up to date (${currentVersion})")
+            }
+        } catch (Exception e) {
+            logger.error("  Error processing ${modName}: ${e.message}")
+        }
+    }
+
+    return updates
+}
+
+tasks.register('updateDependencyVersions') {
+    group = 'dependency management'
+    description = 'Updates dependency versions from CurseForge API, then fails the build so it is re-run with the new versions'
+
+    // Using the current date as an input means Gradle invalidates the cache once per day
+    inputs.property('date', new Date().format('yyyy-MM-dd'))
+    outputs.file(project.file('gradle.properties'))
+
+    doLast {
+        logger.lifecycle("\nUpdating ${project.name} (MC ${project.minecraft_version})...")
+        def updates = collectAndApplyUpdates()
+
+        if (!updates.isEmpty()) {
+            logger.lifecycle("\n=== Update Summary ===")
+            updates.each { logger.lifecycle("  ${it.mod}: ${it.current} -> ${it.latest} (${it.releaseType})") }
+            throw new GradleException(
+                "Dependencies were updated. Please re-run the build to use the new versions."
+            )
+        }
+
+        logger.lifecycle("✓ All dependencies are already at latest versions.")
+    }
+}
+
+// Wire update into the build chain: if dependencies are stale they get updated,
+// then the build fails so it must be re-run with the freshly resolved versions.
+processResources.dependsOn('updateDependencyVersions')

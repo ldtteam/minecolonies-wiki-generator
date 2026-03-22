@@ -1,0 +1,142 @@
+{
+  "name": "NeoForge",
+  "types": [
+    {
+      "type": "COMMON",
+      "values": [
+        {
+          "type": "config",
+          "name": "attributeAdvancedTooltipDebugInfo",
+          "value-type": "boolean",
+          "defaultValue": true,
+          "description": "neoforge.configgui.attributeAdvancedTooltipDebugInfo",
+          "comment": "Set this to true to enable showing debug information about attributes on an item when advanced tooltips is on.",
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "logLegacyTagWarnings",
+          "value-type": "enum",
+          "defaultValue": "DEV_SHORT",
+          "description": "neoforge.configgui.logLegacyTagWarnings",
+          "comment": "A config option mainly for developers. Logs out modded tags that are using the \u0027forge\u0027 namespace when running on integrated server. Defaults to DEV_SHORT.",
+          "enum": [
+            "SILENCED",
+            "DEV_SHORT",
+            "DEV_VERBOSE",
+            "PROD_SHORT",
+            "PROD_VERBOSE"
+          ],
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "logUntranslatedItemTagWarnings",
+          "value-type": "enum",
+          "defaultValue": "SILENCED",
+          "description": "neoforge.configgui.logUntranslatedItemTagWarnings",
+          "comment": "A config option mainly for developers. Logs out modded item tags that do not have translations when running on integrated server. Format desired is tag.item.\u003cnamespace\u003e.\u003cpath\u003e for the translation key. Defaults to SILENCED.",
+          "enum": [
+            "SILENCED",
+            "DEV_SHORT",
+            "DEV_VERBOSE",
+            "PROD_SHORT",
+            "PROD_VERBOSE"
+          ],
+          "needsRestart": false
+        }
+      ]
+    },
+    {
+      "type": "CLIENT",
+      "values": [
+        {
+          "type": "config",
+          "name": "logUntranslatedConfigurationWarnings",
+          "value-type": "boolean",
+          "defaultValue": true,
+          "description": "neoforge.configgui.logUntranslatedConfigurationWarnings",
+          "comment": "A config option mainly for developers. Logs out configuration values that do not have translations when running a client in a development environment.",
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "useCombinedDepthStencilAttachment",
+          "value-type": "boolean",
+          "defaultValue": false,
+          "description": "neoforge.configgui.useCombinedDepthStencilAttachment",
+          "comment": "Set to true to use a combined DEPTH_STENCIL attachment instead of two separate ones.",
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "showLoadWarnings",
+          "value-type": "boolean",
+          "defaultValue": true,
+          "description": "neoforge.configgui.showLoadWarnings",
+          "comment": "When enabled, NeoForge will show any warnings that occurred during loading.",
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "experimentalForgeLightPipelineEnabled",
+          "value-type": "boolean",
+          "defaultValue": false,
+          "description": "neoforge.configgui.forgeLightPipelineEnabled",
+          "comment": "EXPERIMENTAL: Enable the NeoForge block rendering pipeline - fixes the lighting of custom models.",
+          "needsRestart": false
+        }
+      ]
+    },
+    {
+      "type": "SERVER",
+      "values": [
+        {
+          "type": "config",
+          "name": "removeErroringBlockEntities",
+          "value-type": "boolean",
+          "defaultValue": false,
+          "description": "neoforge.configgui.removeErroringBlockEntities",
+          "comment": "Set this to true to remove any BlockEntity that throws an error in its update method instead of closing the server and reporting a crash log. BE WARNED THIS COULD SCREW UP EVERYTHING USE SPARINGLY WE ARE NOT RESPONSIBLE FOR DAMAGES.",
+          "needsRestart": true
+        },
+        {
+          "type": "config",
+          "name": "permissionHandler",
+          "value-type": "string",
+          "defaultValue": "neoforge:default_handler",
+          "description": "neoforge.configgui.permissionHandler",
+          "comment": "The permission handler used by the server. Defaults to neoforge:default_handler if no such handler with that name is registered.",
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "removeErroringEntities",
+          "value-type": "boolean",
+          "defaultValue": false,
+          "description": "neoforge.configgui.removeErroringEntities",
+          "comment": "Set this to true to remove any Entity (Note: Does not include BlockEntities) that throws an error in its tick method instead of closing the server and reporting a crash log. BE WARNED THIS COULD SCREW UP EVERYTHING USE SPARINGLY WE ARE NOT RESPONSIBLE FOR DAMAGES.",
+          "needsRestart": true
+        },
+        {
+          "type": "config",
+          "name": "advertiseDedicatedServerToLan",
+          "value-type": "boolean",
+          "defaultValue": true,
+          "description": "neoforge.configgui.advertiseDedicatedServerToLan",
+          "comment": "Set this to true to enable advertising the dedicated server to local LAN clients so that it shows up in the Multiplayer screen automatically.",
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "fullBoundingBoxLadders",
+          "value-type": "boolean",
+          "defaultValue": false,
+          "description": "neoforge.configgui.fullBoundingBoxLadders",
+          "comment": "Set this to true to check the entire entity\u0027s collision bounding box for ladders instead of just the block they are in. Causes noticeable differences in mechanics so default is vanilla behavior. Default: false.",
+          "needsRestart": true
+        }
+      ]
+    }
+  ]
+}
