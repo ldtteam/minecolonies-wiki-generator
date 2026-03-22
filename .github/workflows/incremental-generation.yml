@@ -21,19 +21,21 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Set up Gradle cache
+      - name: Set up Gradle wrapper cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle/wrapper
+          key: gradle-wrapper-${{ runner.os }}-${{ hashFiles('**/gradle-wrapper.properties') }}
+
+      - name: Set up Gradle dependency cache
         uses: actions/cache@v4
         with:
           path: |
             ~/.gradle/caches
-            ~/.gradle/wrapper
             ~/.gradle/loom-cache
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', '**/gradle.properties') }}
+          key: gradle-deps-${{ runner.os }}-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
           restore-keys: |
-            gradle-${{ runner.os }}-
-
-      - name: Create secret.gradle.properties
-        run: echo "secret_curseforge_api_key=${{ secrets.CURSEFORGE_API_KEY }}" > secret.gradle.properties
+            gradle-deps-${{ runner.os }}-
 
       - name: Install virtual display dependencies
         run: |
@@ -46,7 +48,7 @@ jobs:
       - name: Update dependency versions
         id: update
         run: |
-          ./gradlew updateDependencyVersions 2>&1 | tee /tmp/update-output.txt
+          ./gradlew updateDependencyVersions -Psecret_curseforge_api_key="${{ secrets.CURSEFORGE_API_KEY }}" 2>&1 | tee /tmp/update-output.txt
           if grep -q "Dependencies were updated" /tmp/update-output.txt; then
             echo "updated=true" >> $GITHUB_OUTPUT
           else
@@ -61,7 +63,7 @@ jobs:
         run: |
           Xvfb $DISPLAY -screen 0 1024x768x24 &
           sleep 2
-          ./gradlew runClient
+          ./gradlew runClient -Psecret_curseforge_api_key="${{ secrets.CURSEFORGE_API_KEY }}"
 
       - name: Commit generated output
         if: steps.update.outputs.updated == 'true'

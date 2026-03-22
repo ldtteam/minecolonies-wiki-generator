@@ -80,21 +80,13 @@ ext.curseforgeModIds = [
 ]
 
 def loadApiKey = {
-    def secretFile = rootProject.file('secret.gradle.properties')
-    if (!secretFile.exists()) {
-        throw new GradleException(
-            "secret.gradle.properties not found.\n" +
-            "Create it in the project root with:\n" +
-            "  secret_curseforge_api_key=YOUR_API_KEY\n\n" +
-            "Get your API key from: https://console.curseforge.com/"
-        )
-    }
-    def props = new Properties()
-    secretFile.withInputStream { props.load(it) }
-    def apiKey = props.getProperty('secret_curseforge_api_key')
+    def apiKey = rootProject.findProperty('secret_curseforge_api_key')
     if (!apiKey) {
         throw new GradleException(
-            "Invalid or missing secret_curseforge_api_key in secret.gradle.properties\n" +
+            "CurseForge API key not found. Provide it via:\n" +
+            "  -Psecret_curseforge_api_key=YOUR_API_KEY\n" +
+            "or add to ~/.gradle/gradle.properties:\n" +
+            "  secret_curseforge_api_key=YOUR_API_KEY\n\n" +
             "Get your API key from: https://console.curseforge.com/"
         )
     }
