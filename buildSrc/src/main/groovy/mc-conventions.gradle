@@ -190,7 +190,7 @@ def collectAndApplyUpdates = {
 
 tasks.register('updateDependencyVersions') {
     group = 'dependency management'
-    description = 'Updates dependency versions from CurseForge API, then fails the build so it is re-run with the new versions'
+    description = 'Updates dependency versions from CurseForge API'
 
     // Using the current date as an input means Gradle invalidates the cache once per day
     inputs.property('date', new Date().format('yyyy-MM-dd'))
@@ -203,15 +203,15 @@ tasks.register('updateDependencyVersions') {
         if (!updates.isEmpty()) {
             logger.lifecycle("\n=== Update Summary ===")
             updates.each { logger.lifecycle("  ${it.mod}: ${it.current} -> ${it.latest} (${it.releaseType})") }
-            throw new GradleException(
-                "Dependencies were updated. Please re-run the build to use the new versions."
-            )
+            logger.lifecycle("Dependencies were updated.")
+        } else {
+            logger.lifecycle("✓ All dependencies are already at latest versions.")
         }
-
-        logger.lifecycle("✓ All dependencies are already at latest versions.")
     }
 }
 
-// Wire update into the build chain: if dependencies are stale they get updated,
-// then the build fails so it must be re-run with the freshly resolved versions.
-processResources.dependsOn('updateDependencyVersions')
+// Wire update into the build chain for local dev: if dependencies are stale they get updated
+// before resources are processed. In CI, updateDependencyVersions is run explicitly as its own step.
+if (!System.getenv('CI')) {
+    processResources.dependsOn('updateDependencyVersions')
+}
