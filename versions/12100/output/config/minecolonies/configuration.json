@@ -2,41 +2,6 @@
   "name": "MineColonies",
   "types": [
     {
-      "type": "COMMON",
-      "values": [
-        {
-          "type": "category",
-          "name": "requestsystem",
-          "children": [
-            {
-              "type": "config",
-              "name": "enabledebuglogging",
-              "value-type": "boolean",
-              "defaultValue": false,
-              "description": "minecolonies.config.enabledebuglogging",
-              "comment": "Should the request system show debug information in the debug.log? Useful if malfunctioning.",
-              "needsRestart": false
-            }
-          ]
-        },
-        {
-          "type": "category",
-          "name": "gameplay",
-          "children": [
-            {
-              "type": "config",
-              "name": "generatesupplyloot",
-              "value-type": "boolean",
-              "defaultValue": true,
-              "description": "minecolonies.config.generatesupplyloot",
-              "comment": "Whether to generate supply ships and camps in loot chests.",
-              "needsRestart": false
-            }
-          ]
-        }
-      ]
-    },
-    {
       "type": "CLIENT",
       "values": [
         {
@@ -81,6 +46,15 @@
             },
             {
               "type": "config",
+              "name": "showdyetooltips",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.showdyetooltips",
+              "comment": "When true, dyed leather items will show a tooltip so that you know what color to use.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
               "name": "neighborbuildingrange",
               "value-type": "number",
               "defaultValue": 4,
@@ -99,6 +73,41 @@
               "comment": "How close (in blocks) you need to be to see work orders while wearing the Build Goggles. ",
               "min": 1.0,
               "max": 250.0,
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "COMMON",
+      "values": [
+        {
+          "type": "category",
+          "name": "requestsystem",
+          "children": [
+            {
+              "type": "config",
+              "name": "enabledebuglogging",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.enabledebuglogging",
+              "comment": "Should the request system show debug information in the debug.log? Useful if malfunctioning.",
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "generatesupplyloot",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.generatesupplyloot",
+              "comment": "Whether to generate supply ships and camps in loot chests.",
               "needsRestart": false
             }
           ]
