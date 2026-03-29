@@ -97,7 +97,7 @@ public final class DataGeneratorManager<L>
             LOGGER.info("Starting generator: {}", generator.getName());
 
             final Path generatorOutputPath = generator.getGeneratorOutputPath(this.entrypoint.getOutputPath());
-            deletePath(generatorOutputPath);
+            deletePath(generatorOutputPath, excludedNamespaces);
 
             final DataGeneratorOptions<L> options = new DataGeneratorOptions<>(generatorOutputPath, GSON, level, excludedNamespaces);
             futures.add(generator.generate(options).whenComplete((result, throwable) -> {
@@ -112,13 +112,16 @@ public final class DataGeneratorManager<L>
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    private void deletePath(final Path path)
+    private void deletePath(final Path path, final Set<String> preserveSubdirs)
     {
         if (Files.exists(path))
         {
             try (Stream<Path> walk = Files.walk(path))
             {
-                walk.sorted(Comparator.reverseOrder()).map(Path::toFile).forEach(File::delete);
+                walk.sorted(Comparator.reverseOrder())
+                    .filter(p -> path.relativize(p).getNameCount() < 2 || !preserveSubdirs.contains(path.relativize(p).getName(0).toString()))
+                    .map(Path::toFile)
+                    .forEach(File::delete);
             }
             catch (IOException e)
             {
