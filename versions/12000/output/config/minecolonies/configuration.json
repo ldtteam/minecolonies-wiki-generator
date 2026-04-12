@@ -2,84 +2,6 @@
   "name": "MineColonies",
   "types": [
     {
-      "type": "CLIENT",
-      "values": [
-        {
-          "type": "category",
-          "name": "gameplay",
-          "children": [
-            {
-              "type": "config",
-              "name": "neighborbuildingrendering",
-              "value-type": "boolean",
-              "defaultValue": true,
-              "description": "minecolonies.config.neighborbuildingrendering",
-              "comment": "By default, when placing a schematic near other buildings, the already-placed buildings will show as if they were at level 5 and have a blue outline around them. You can disable that by setting this to false.",
-              "needsRestart": false
-            },
-            {
-              "type": "config",
-              "name": "holidayfeatures",
-              "value-type": "boolean",
-              "defaultValue": true,
-              "description": "minecolonies.config.holidayfeatures",
-              "comment": "Should special holiday content be displayed?",
-              "needsRestart": false
-            },
-            {
-              "type": "config",
-              "name": "enablecitizenvoices",
-              "value-type": "boolean",
-              "defaultValue": true,
-              "description": "minecolonies.config.enablecitizenvoices",
-              "comment": "minecolonies.config.enablecitizenvoices.comment",
-              "needsRestart": false
-            },
-            {
-              "type": "config",
-              "name": "colonyteamborders",
-              "value-type": "boolean",
-              "defaultValue": true,
-              "description": "minecolonies.config.colonyteamborders",
-              "comment": "When true, the colony borders shown when holding the build tool will be in the colony\u0027s team color. When false, the colony you\u0027re inside will be white and any other colony will be red.",
-              "needsRestart": false
-            },
-            {
-              "type": "config",
-              "name": "showdyetooltips",
-              "value-type": "boolean",
-              "defaultValue": true,
-              "description": "minecolonies.config.showdyetooltips",
-              "comment": "When true, dyed leather items will show a tooltip so that you know what color to use.",
-              "needsRestart": false
-            },
-            {
-              "type": "config",
-              "name": "neighborbuildingrange",
-              "value-type": "number",
-              "defaultValue": 4,
-              "description": "minecolonies.config.neighborbuildingrange",
-              "comment": "How close a building needs to be to another to be considered a neighbor, in blocks. -1 \u003d intersecting, 0 \u003d touching",
-              "min": -2.0,
-              "max": 16.0,
-              "needsRestart": false
-            },
-            {
-              "type": "config",
-              "name": "buildgogglerange",
-              "value-type": "number",
-              "defaultValue": 50,
-              "description": "minecolonies.config.buildgogglerange",
-              "comment": "How close (in blocks) you need to be to see work orders while wearing the Build Goggles.",
-              "min": 1.0,
-              "max": 250.0,
-              "needsRestart": false
-            }
-          ]
-        }
-      ]
-    },
-    {
       "type": "COMMON",
       "values": [
         {
@@ -733,6 +655,84 @@
               "comment": "Amount of additional threads to be used for pathfinding.",
               "min": 1.0,
               "max": 10.0,
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CLIENT",
+      "values": [
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "neighborbuildingrendering",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.neighborbuildingrendering",
+              "comment": "By default, when placing a schematic near other buildings, the already-placed buildings will show as if they were at level 5 and have a blue outline around them. You can disable that by setting this to false.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "holidayfeatures",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.holidayfeatures",
+              "comment": "Should special holiday content be displayed?",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "enablecitizenvoices",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.enablecitizenvoices",
+              "comment": "minecolonies.config.enablecitizenvoices.comment",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "colonyteamborders",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.colonyteamborders",
+              "comment": "When true, the colony borders shown when holding the build tool will be in the colony\u0027s team color. When false, the colony you\u0027re inside will be white and any other colony will be red.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "showdyetooltips",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.showdyetooltips",
+              "comment": "When true, dyed leather items will show a tooltip so that you know what color to use.",
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "neighborbuildingrange",
+              "value-type": "number",
+              "defaultValue": 4,
+              "description": "minecolonies.config.neighborbuildingrange",
+              "comment": "How close a building needs to be to another to be considered a neighbor, in blocks. -1 \u003d intersecting, 0 \u003d touching",
+              "min": -2.0,
+              "max": 16.0,
+              "needsRestart": false
+            },
+            {
+              "type": "config",
+              "name": "buildgogglerange",
+              "value-type": "number",
+              "defaultValue": 50,
+              "description": "minecolonies.config.buildgogglerange",
+              "comment": "How close (in blocks) you need to be to see work orders while wearing the Build Goggles.",
+              "min": 1.0,
+              "max": 250.0,
               "needsRestart": false
             }
           ]

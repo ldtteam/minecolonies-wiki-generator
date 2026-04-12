@@ -2,6 +2,87 @@
   "name": "Structurize",
   "types": [
     {
+      "type": "CLIENT",
+      "values": [
+        {
+          "type": "category",
+          "name": "blueprint",
+          "children": [
+            {
+              "type": "category",
+              "name": "renderer",
+              "children": [
+                {
+                  "type": "config",
+                  "name": "light_level",
+                  "value-type": "number",
+                  "defaultValue": 15,
+                  "description": "structurize.config.light_level",
+                  "comment": "-1 for same as current vanilla world, 0 to 15 (min to max) for static light level ",
+                  "min": -1.0,
+                  "max": 15.0,
+                  "needsRestart": false
+                },
+                {
+                  "type": "config",
+                  "name": "render_placeholders_nice",
+                  "value-type": "boolean",
+                  "defaultValue": false,
+                  "description": "structurize.config.render_placeholders_nice",
+                  "comment": "If disabled show placeholders as normal blocks, if enabled render: any (light) -\u003e nothing, fluid (blue) -\u003e dimension default fluid, solid (brown) -\u003e worldgen block, tag (transparent) -\u003e content block. Fluid and solid only work in singleplayer/for LAN owner, else it\u0027s just best guess. Currently without auto-updating",
+                  "needsRestart": false
+                },
+                {
+                  "type": "config",
+                  "name": "share_previews",
+                  "value-type": "boolean",
+                  "defaultValue": false,
+                  "description": "structurize.config.share_previews",
+                  "comment": "Enabling this will send most of your active previews to nearby players",
+                  "needsRestart": false
+                },
+                {
+                  "type": "config",
+                  "name": "transparency",
+                  "value-type": "number",
+                  "defaultValue": -1.0,
+                  "description": "structurize.config.transparency",
+                  "comment": "From 0 (transparent) to 1 (opaque). ALPHA FEATURE, reported bugs may not receive fix. (Minus values also mean disabled) ",
+                  "min": -1.0,
+                  "max": 1.0,
+                  "needsRestart": false
+                },
+                {
+                  "type": "config",
+                  "name": "see_shared_previews",
+                  "value-type": "boolean",
+                  "defaultValue": false,
+                  "description": "structurize.config.see_shared_previews",
+                  "comment": "Once enabled you will see previews from other players within sensible distance",
+                  "needsRestart": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "scan_tool_scrolling",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "structurize.config.scan_tool_scrolling",
+              "comment": "Sneak+scroll on the hotbar switches scan tool slots",
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "SERVER",
       "values": [
         {
@@ -140,87 +221,6 @@
               "defaultValue": true,
               "description": "structurize.config.teleportSafety",
               "comment": "Allow teleporting a little distance away if the landing area is blocked; disable to teleport exactly to target.",
-              "needsRestart": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "CLIENT",
-      "values": [
-        {
-          "type": "category",
-          "name": "blueprint",
-          "children": [
-            {
-              "type": "category",
-              "name": "renderer",
-              "children": [
-                {
-                  "type": "config",
-                  "name": "light_level",
-                  "value-type": "number",
-                  "defaultValue": 15,
-                  "description": "structurize.config.light_level",
-                  "comment": "-1 for same as current vanilla world, 0 to 15 (min to max) for static light level ",
-                  "min": -1.0,
-                  "max": 15.0,
-                  "needsRestart": false
-                },
-                {
-                  "type": "config",
-                  "name": "render_placeholders_nice",
-                  "value-type": "boolean",
-                  "defaultValue": false,
-                  "description": "structurize.config.render_placeholders_nice",
-                  "comment": "If disabled show placeholders as normal blocks, if enabled render: any (light) -\u003e nothing, fluid (blue) -\u003e dimension default fluid, solid (brown) -\u003e worldgen block, tag (transparent) -\u003e content block. Fluid and solid only work in singleplayer/for LAN owner, else it\u0027s just best guess. Currently without auto-updating",
-                  "needsRestart": false
-                },
-                {
-                  "type": "config",
-                  "name": "share_previews",
-                  "value-type": "boolean",
-                  "defaultValue": false,
-                  "description": "structurize.config.share_previews",
-                  "comment": "Enabling this will send most of your active previews to nearby players",
-                  "needsRestart": false
-                },
-                {
-                  "type": "config",
-                  "name": "transparency",
-                  "value-type": "number",
-                  "defaultValue": -1.0,
-                  "description": "structurize.config.transparency",
-                  "comment": "From 0 (transparent) to 1 (opaque). ALPHA FEATURE, reported bugs may not receive fix. (Minus values also mean disabled) ",
-                  "min": -1.0,
-                  "max": 1.0,
-                  "needsRestart": false
-                },
-                {
-                  "type": "config",
-                  "name": "see_shared_previews",
-                  "value-type": "boolean",
-                  "defaultValue": false,
-                  "description": "structurize.config.see_shared_previews",
-                  "comment": "Once enabled you will see previews from other players within sensible distance",
-                  "needsRestart": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "category",
-          "name": "gameplay",
-          "children": [
-            {
-              "type": "config",
-              "name": "scan_tool_scrolling",
-              "value-type": "boolean",
-              "defaultValue": false,
-              "description": "structurize.config.scan_tool_scrolling",
-              "comment": "Sneak+scroll on the hotbar switches scan tool slots",
               "needsRestart": false
             }
           ]
