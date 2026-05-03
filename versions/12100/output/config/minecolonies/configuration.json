@@ -2,6 +2,41 @@
   "name": "MineColonies",
   "types": [
     {
+      "type": "COMMON",
+      "values": [
+        {
+          "type": "category",
+          "name": "requestsystem",
+          "children": [
+            {
+              "type": "config",
+              "name": "enabledebuglogging",
+              "value-type": "boolean",
+              "defaultValue": false,
+              "description": "minecolonies.config.enabledebuglogging",
+              "comment": "Should the request system show debug information in the debug.log? Useful if malfunctioning.",
+              "needsRestart": false
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "name": "gameplay",
+          "children": [
+            {
+              "type": "config",
+              "name": "generatesupplyloot",
+              "value-type": "boolean",
+              "defaultValue": true,
+              "description": "minecolonies.config.generatesupplyloot",
+              "comment": "Whether to generate supply ships and camps in loot chests.",
+              "needsRestart": false
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "SERVER",
       "values": [
         {
@@ -698,41 +733,6 @@
               "comment": "How close (in blocks) you need to be to see work orders while wearing the Build Goggles. ",
               "min": 1.0,
               "max": 250.0,
-              "needsRestart": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "COMMON",
-      "values": [
-        {
-          "type": "category",
-          "name": "requestsystem",
-          "children": [
-            {
-              "type": "config",
-              "name": "enabledebuglogging",
-              "value-type": "boolean",
-              "defaultValue": false,
-              "description": "minecolonies.config.enabledebuglogging",
-              "comment": "Should the request system show debug information in the debug.log? Useful if malfunctioning.",
-              "needsRestart": false
-            }
-          ]
-        },
-        {
-          "type": "category",
-          "name": "gameplay",
-          "children": [
-            {
-              "type": "config",
-              "name": "generatesupplyloot",
-              "value-type": "boolean",
-              "defaultValue": true,
-              "description": "minecolonies.config.generatesupplyloot",
-              "comment": "Whether to generate supply ships and camps in loot chests.",
               "needsRestart": false
             }
           ]
