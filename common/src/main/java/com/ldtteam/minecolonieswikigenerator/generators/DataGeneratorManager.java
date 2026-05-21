@@ -97,7 +97,10 @@ public final class DataGeneratorManager<L>
             LOGGER.info("Starting generator: {}", generator.getName());
 
             final Path generatorOutputPath = generator.getGeneratorOutputPath(this.entrypoint.getOutputPath());
-            deletePath(generatorOutputPath, excludedNamespaces);
+            if (generator.shouldClearBeforeGeneration())
+            {
+                deletePath(generatorOutputPath, excludedNamespaces);
+            }
 
             final DataGeneratorOptions<L> options = new DataGeneratorOptions<>(generatorOutputPath, GSON, level, excludedNamespaces);
             futures.add(generator.generate(options).whenComplete((result, throwable) -> {

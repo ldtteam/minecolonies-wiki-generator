@@ -5,8 +5,11 @@ plugins {
 repositories {
     mavenCentral()
     maven {
-        url 'https://ldtteam.jfrog.io/ldtteam/modding/'
-        name = 'LDTTeam - Modding'
+        url 'https://cursemaven.com'
+        name = 'CurseMaven'
+        content {
+            includeGroup 'curse.maven'
+        }
     }
 }
 
