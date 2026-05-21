@@ -209,9 +209,3 @@ tasks.register('updateDependencyVersions') {
         }
     }
 }
-
-// Wire update into the build chain for local dev: if dependencies are stale they get updated
-// before resources are processed. In CI, updateDependencyVersions is run explicitly as its own step.
-if (!System.getenv('CI')) {
-    processResources.dependsOn('updateDependencyVersions')
-}
