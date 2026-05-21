@@ -2,52 +2,6 @@
   "name": "NeoForge",
   "types": [
     {
-      "type": "COMMON",
-      "values": [
-        {
-          "type": "config",
-          "name": "attributeAdvancedTooltipDebugInfo",
-          "value-type": "boolean",
-          "defaultValue": true,
-          "description": "neoforge.configgui.attributeAdvancedTooltipDebugInfo",
-          "comment": "Set this to true to enable showing debug information about attributes on an item when advanced tooltips is on.",
-          "needsRestart": false
-        },
-        {
-          "type": "config",
-          "name": "logLegacyTagWarnings",
-          "value-type": "enum",
-          "defaultValue": "DEV_SHORT",
-          "description": "neoforge.configgui.logLegacyTagWarnings",
-          "comment": "A config option mainly for developers. Logs out modded tags that are using the \u0027forge\u0027 namespace when running on integrated server. Defaults to DEV_SHORT.",
-          "enum": [
-            "SILENCED",
-            "DEV_SHORT",
-            "DEV_VERBOSE",
-            "PROD_SHORT",
-            "PROD_VERBOSE"
-          ],
-          "needsRestart": false
-        },
-        {
-          "type": "config",
-          "name": "logUntranslatedItemTagWarnings",
-          "value-type": "enum",
-          "defaultValue": "SILENCED",
-          "description": "neoforge.configgui.logUntranslatedItemTagWarnings",
-          "comment": "A config option mainly for developers. Logs out modded item tags that do not have translations when running on integrated server. Format desired is tag.item.\u003cnamespace\u003e.\u003cpath\u003e for the translation key. Defaults to SILENCED.",
-          "enum": [
-            "SILENCED",
-            "DEV_SHORT",
-            "DEV_VERBOSE",
-            "PROD_SHORT",
-            "PROD_VERBOSE"
-          ],
-          "needsRestart": false
-        }
-      ]
-    },
-    {
       "type": "CLIENT",
       "values": [
         {
@@ -135,6 +89,52 @@
           "description": "neoforge.configgui.fullBoundingBoxLadders",
           "comment": "Set this to true to check the entire entity\u0027s collision bounding box for ladders instead of just the block they are in. Causes noticeable differences in mechanics so default is vanilla behavior. Default: false.",
           "needsRestart": true
+        }
+      ]
+    },
+    {
+      "type": "COMMON",
+      "values": [
+        {
+          "type": "config",
+          "name": "attributeAdvancedTooltipDebugInfo",
+          "value-type": "boolean",
+          "defaultValue": true,
+          "description": "neoforge.configgui.attributeAdvancedTooltipDebugInfo",
+          "comment": "Set this to true to enable showing debug information about attributes on an item when advanced tooltips is on.",
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "logLegacyTagWarnings",
+          "value-type": "enum",
+          "defaultValue": "DEV_SHORT",
+          "description": "neoforge.configgui.logLegacyTagWarnings",
+          "comment": "A config option mainly for developers. Logs out modded tags that are using the \u0027forge\u0027 namespace when running on integrated server. Defaults to DEV_SHORT.",
+          "enum": [
+            "SILENCED",
+            "DEV_SHORT",
+            "DEV_VERBOSE",
+            "PROD_SHORT",
+            "PROD_VERBOSE"
+          ],
+          "needsRestart": false
+        },
+        {
+          "type": "config",
+          "name": "logUntranslatedItemTagWarnings",
+          "value-type": "enum",
+          "defaultValue": "SILENCED",
+          "description": "neoforge.configgui.logUntranslatedItemTagWarnings",
+          "comment": "A config option mainly for developers. Logs out modded item tags that do not have translations when running on integrated server. Format desired is tag.item.\u003cnamespace\u003e.\u003cpath\u003e for the translation key. Defaults to SILENCED.",
+          "enum": [
+            "SILENCED",
+            "DEV_SHORT",
+            "DEV_VERBOSE",
+            "PROD_SHORT",
+            "PROD_VERBOSE"
+          ],
+          "needsRestart": false
         }
       ]
     }

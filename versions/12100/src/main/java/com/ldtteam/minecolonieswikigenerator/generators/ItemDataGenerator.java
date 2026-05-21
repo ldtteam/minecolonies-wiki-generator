@@ -1,9 +1,11 @@
 package com.ldtteam.minecolonieswikigenerator.generators;
 
 import com.google.gson.JsonObject;
+import com.minecolonies.api.items.IMinecoloniesFoodItem;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import org.apache.logging.log4j.LogManager;
@@ -70,6 +72,18 @@ public class ItemDataGenerator extends DataGenerator<ClientLevel>
             if (blockKey != null)
             {
                 json.addProperty("block-id", blockKey.toString());
+            }
+        }
+
+        if (item instanceof IMinecoloniesFoodItem foodItem)
+        {
+            final FoodProperties foodProperties = item.getFoodProperties(item.getDefaultInstance(), null);
+            if (foodProperties != null)
+            {
+                final JsonObject food = new JsonObject();
+                food.addProperty("tier", foodItem.getTier());
+                food.addProperty("saturation", foodProperties.nutrition());
+                json.add("food", food);
             }
         }
 
