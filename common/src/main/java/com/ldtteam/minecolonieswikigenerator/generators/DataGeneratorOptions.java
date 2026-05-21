@@ -68,6 +68,11 @@ public class DataGeneratorOptions<L>
      *
      * @return the level instance
      */
+    public Path getOutputPath()
+    {
+        return outputPath;
+    }
+
     public L getLevel()
     {
         return level;

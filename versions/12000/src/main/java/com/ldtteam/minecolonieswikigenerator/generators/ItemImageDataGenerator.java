@@ -136,19 +136,20 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
             image.downloadTexture(0, false);
             image.flipY();
 
-            renderTarget.unbindWrite();
-            mc.getMainRenderTarget().bindWrite(true);
-            renderTarget.destroyBuffers();
-
             return image.asByteArray();
         }
         catch (IOException e)
         {
             LOGGER.error("Error rendering item image", e);
+            return null;
+        }
+        finally
+        {
+            posestack.popPose();
+            RenderSystem.applyModelViewMatrix();
             renderTarget.unbindWrite();
             mc.getMainRenderTarget().bindWrite(true);
             renderTarget.destroyBuffers();
-            return null;
         }
     }
 

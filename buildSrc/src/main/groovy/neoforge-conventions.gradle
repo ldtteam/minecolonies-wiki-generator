@@ -9,11 +9,12 @@ plugins {
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-    implementation "com.ldtteam:minecolonies:${project.minecolonies_version}"
-    implementation "com.ldtteam:structurize:${project.structurize_version}"
-    implementation "com.ldtteam:blockui:${project.blockui_version}"
-    implementation "com.ldtteam:domum-ornamentum:${project.domum_ornamentum_version}"
-    implementation "com.ldtteam:datagenerators:${project.datagenerators_version}:universal"
+    implementation "curse.maven:minecolonies-245506:${project.minecolonies_version}"
+    implementation "curse.maven:structurize-298744:${project.structurize_version}"
+    implementation "curse.maven:blockui-522992:${project.blockui_version}"
+    implementation "curse.maven:domum-ornamentum-527361:${project.domum_ornamentum_version}"
+    implementation "curse.maven:multi-piston-303278:${project.multi_piston_version}"
+    implementation "curse.maven:stylecolonies-827507:${project.stylecolonies_version}"
 }
 
 minecraft.accessTransformers.file('src/main/resources/META-INF/accesstransformer.cfg')

@@ -9,12 +9,12 @@ plugins {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    implementation(fg.deobf("com.ldtteam:minecolonies:${project.minecolonies_version}"))
-    implementation(fg.deobf("com.ldtteam:structurize:${project.structurize_version}"))
-    implementation(fg.deobf("com.ldtteam:domum_ornamentum:${project.domum_ornamentum_version}:universal"))
-    implementation(fg.deobf("com.ldtteam:multipiston:${project.multi_piston_version}"))
-    implementation(fg.deobf("com.ldtteam:blockui:${project.blockui_version}"))
-    implementation(fg.deobf("com.ldtteam:datagenerators:${project.datagenerators_version}:universal"))
+    implementation(fg.deobf("curse.maven:minecolonies-245506:${project.minecolonies_version}"))
+    implementation(fg.deobf("curse.maven:structurize-298744:${project.structurize_version}"))
+    implementation(fg.deobf("curse.maven:domum-ornamentum-527361:${project.domum_ornamentum_version}"))
+    implementation(fg.deobf("curse.maven:multi-piston-303278:${project.multi_piston_version}"))
+    implementation(fg.deobf("curse.maven:blockui-522992:${project.blockui_version}"))
+    implementation(fg.deobf("curse.maven:stylecolonies-827507:${project.stylecolonies_version}"))
 }
 
 minecraft {

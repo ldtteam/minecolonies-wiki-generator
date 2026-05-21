@@ -76,7 +76,9 @@ ext.curseforgeModIds = [
     'minecolonies'    : 245506,
     'structurize'     : 298744,
     'domum_ornamentum': 527361,
-    'blockui'         : 522992
+    'blockui'         : 522992,
+    'multi_piston'    : 303278,
+    'stylecolonies'   : 827507
 ]
 
 def loadApiKey = {
@@ -111,22 +113,6 @@ def findLatestFileIndex = { List<Map> indexes, String gameVersion ->
     return filtered.first()
 }
 
-def extractVersionFromFileName = { String fileName, String modName ->
-    def name = fileName
-        .replaceAll(/\.jar$/, '')
-        .replaceAll(/-universal$/, '')
-        .replaceAll(/-main$/, '')
-
-    def variants = [modName, modName.replace('_', '-'), modName.replace('_', ''), modName.replace('-', '_')].unique()
-    for (variant in variants) {
-        def pattern = /^${Pattern.quote(variant)}-/
-        if (name =~ pattern) return name.replaceFirst(pattern, '')
-    }
-
-    logger.warn("Could not extract version from filename: ${fileName}")
-    return name
-}
-
 def getReleaseTypeName = { int releaseType ->
     switch (releaseType) {
         case 1: return 'Release'
@@ -147,9 +133,9 @@ def collectAndApplyUpdates = {
     logger.lifecycle("Fetching mod information from CurseForge...")
     curseforgeModIds.each { modName, modId ->
         def propName = "${modName}_version"
-        def currentVersion = fileProps.getProperty(propName)
+        def currentFileId = fileProps.getProperty(propName)
 
-        if (currentVersion == null) {
+        if (currentFileId == null) {
             logger.info("  Skipping ${modName}: property '${propName}' not found")
             return
         }
@@ -165,20 +151,20 @@ def collectAndApplyUpdates = {
                 return
             }
 
-            def newVersion = extractVersionFromFileName(latestIndex.filename as String, modName)
+            def newFileId = (latestIndex.fileId as int).toString()
             def releaseTypeName = getReleaseTypeName(latestIndex.releaseType as int)
 
-            if (currentVersion != newVersion) {
-                logger.lifecycle("  ${modName}: ${currentVersion} -> ${newVersion} (${releaseTypeName})")
+            if (currentFileId != newFileId) {
+                logger.lifecycle("  ${modName}: ${currentFileId} -> ${newFileId} (${latestIndex.filename}, ${releaseTypeName})")
 
                 def pattern = /^${Pattern.quote(propName)}=.*/
                 propsFile.text = propsFile.readLines()
-                    .collect { line -> line =~ pattern ? "${propName}=${newVersion}" : line }
+                    .collect { line -> line =~ pattern ? "${propName}=${newFileId}" : line }
                     .join(System.lineSeparator()) + System.lineSeparator()
 
-                updates << [mod: modName, current: currentVersion, latest: newVersion, releaseType: releaseTypeName]
+                updates << [mod: modName, current: currentFileId, latest: newFileId, fileName: latestIndex.filename, releaseType: releaseTypeName]
             } else {
-                logger.info("  ${modName}: up to date (${currentVersion})")
+                logger.info("  ${modName}: up to date (${currentFileId})")
             }
         } catch (Exception e) {
             logger.error("  Error processing ${modName}: ${e.message}")
@@ -202,16 +188,10 @@ tasks.register('updateDependencyVersions') {
 
         if (!updates.isEmpty()) {
             logger.lifecycle("\n=== Update Summary ===")
-            updates.each { logger.lifecycle("  ${it.mod}: ${it.current} -> ${it.latest} (${it.releaseType})") }
+            updates.each { logger.lifecycle("  ${it.mod}: ${it.current} -> ${it.latest} (${it.fileName}, ${it.releaseType})") }
             logger.lifecycle("Dependencies were updated.")
         } else {
             logger.lifecycle("✓ All dependencies are already at latest versions.")
         }
     }
-}
-
-// Wire update into the build chain for local dev: if dependencies are stale they get updated
-// before resources are processed. In CI, updateDependencyVersions is run explicitly as its own step.
-if (!System.getenv('CI')) {
-    processResources.dependsOn('updateDependencyVersions')
 }

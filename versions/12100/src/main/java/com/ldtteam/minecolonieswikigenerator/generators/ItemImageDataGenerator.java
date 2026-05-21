@@ -128,10 +128,6 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
         guiGraphics.pose().popPose();
         guiGraphics.flush();
 
-        // Pop the model view stack
-        matrix4fstack.popMatrix();
-        RenderSystem.applyModelViewMatrix();
-
         // Read pixels
         try (final NativeImage image = new NativeImage(size, size, false))
         {
@@ -139,19 +135,20 @@ public class ItemImageDataGenerator extends LongRunningDataGenerator<ClientLevel
             image.downloadTexture(0, false);
             image.flipY();
 
-            renderTarget.unbindWrite();
-            mc.getMainRenderTarget().bindWrite(true);
-            renderTarget.destroyBuffers();
-
             return image.asByteArray();
         }
         catch (IOException e)
         {
             LOGGER.error("Error rendering item image", e);
+            return null;
+        }
+        finally
+        {
+            matrix4fstack.popMatrix();
+            RenderSystem.applyModelViewMatrix();
             renderTarget.unbindWrite();
             mc.getMainRenderTarget().bindWrite(true);
             renderTarget.destroyBuffers();
-            return null;
         }
     }
 }

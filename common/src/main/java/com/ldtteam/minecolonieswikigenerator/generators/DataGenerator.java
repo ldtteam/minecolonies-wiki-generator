@@ -24,6 +24,15 @@ public abstract class DataGenerator<L>
     public abstract Path getGeneratorOutputPath(final Path rootPath);
 
     /**
+     * Whether the output folder should be cleared before generation runs.
+     * Override to return false for generators that manage their own staleness.
+     */
+    public boolean shouldClearBeforeGeneration()
+    {
+        return true;
+    }
+
+    /**
      * Runs the data generation asynchronously.
      *
      * @return a CompletableFuture that completes when generation is done
