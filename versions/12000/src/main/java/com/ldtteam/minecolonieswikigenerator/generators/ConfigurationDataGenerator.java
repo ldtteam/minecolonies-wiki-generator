@@ -34,6 +34,10 @@ public class ConfigurationDataGenerator extends DataGenerator<ClientLevel>
     private static final String VALUE_CHILD_TYPE_CATEGORY = "category";
     private static final String VALUE_CHILD_TYPE_CONFIG   = "config";
 
+    private static final Set<String> ALWAYS_EXCLUDED_MODS = Set.of(
+        "minecraft", "forge", "neoforge", "jei", "fml"
+    );
+
     private static final Pattern PATTERN_NUMBER_RANGE       = Pattern.compile("^.*Range: ([\\d\\-,.]+) ~ ([\\d\\-,.]+).*$", Pattern.DOTALL);
     private static final Pattern PATTERN_NUMBER_BOUND_RANGE = Pattern.compile("^.*Range: ([<>]) ([\\d\\-,.]+).*$", Pattern.DOTALL);
     private static final Pattern PATTERN_ENUM_VALUES        = Pattern.compile("^.*Allowed Values: (.*)$");
@@ -57,15 +61,15 @@ public class ConfigurationDataGenerator extends DataGenerator<ClientLevel>
             LOGGER.info("Starting configuration data generation...");
             final AtomicInteger count = new AtomicInteger(0);
 
-            final Map<String, Map<ModConfig.Type, Map<LinkedList<String>, ForgeConfigSpec.ValueSpec>>> fullConfiguration = new HashMap<>();
+            final Map<String, Map<ModConfig.Type, Map<LinkedList<String>, ForgeConfigSpec.ValueSpec>>> fullConfiguration = new LinkedHashMap<>();
 
-            ConfigTracker.INSTANCE.configSets().values().stream().flatMap(Collection::stream).filter(config -> !options.isNamespaceExcluded(config.getModId())).forEach(config -> {
+            ConfigTracker.INSTANCE.configSets().values().stream().flatMap(Collection::stream).filter(config -> !options.isNamespaceExcluded(config.getModId()) && !ALWAYS_EXCLUDED_MODS.contains(config.getModId())).forEach(config -> {
                 if (config.getSpec() instanceof ForgeConfigSpec configSpec)
                 {
                     collectConfig(new LinkedList<>(), configSpec.getSpec(), (key, valueSpec) -> {
                         final Map<ModConfig.Type, Map<LinkedList<String>, ForgeConfigSpec.ValueSpec>> modMap =
-                            fullConfiguration.computeIfAbsent(config.getModId(), a -> new HashMap<>());
-                        final Map<LinkedList<String>, ForgeConfigSpec.ValueSpec> modTypeMap = modMap.computeIfAbsent(config.getType(), a -> new HashMap<>());
+                            fullConfiguration.computeIfAbsent(config.getModId(), a -> new LinkedHashMap<>());
+                        final Map<LinkedList<String>, ForgeConfigSpec.ValueSpec> modTypeMap = modMap.computeIfAbsent(config.getType(), a -> new LinkedHashMap<>());
                         modTypeMap.put(key, valueSpec);
                     });
                 }
