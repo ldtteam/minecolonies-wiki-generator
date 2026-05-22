@@ -2,8 +2,10 @@ package com.ldtteam.minecolonieswikigenerator.generators;
 
 import com.google.gson.JsonObject;
 import com.minecolonies.api.items.IMinecoloniesFoodItem;
+import com.minecolonies.core.items.ItemCrop;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -11,6 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.Field;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -85,6 +88,26 @@ public class ItemDataGenerator extends DataGenerator<ClientLevel>
                 food.addProperty("saturation", foodProperties.getNutrition());
                 json.add("food", food);
             }
+        }
+
+        if (item instanceof ItemCrop cropItem)
+        {
+            final JsonObject crop = new JsonObject();
+            try
+            {
+                final Field preferredBiomeField = ItemCrop.class.getDeclaredField("preferredBiome");
+                preferredBiomeField.setAccessible(true);
+                final TagKey<?> preferredBiome = (TagKey<?>) preferredBiomeField.get(cropItem);
+                if (preferredBiome != null)
+                {
+                    crop.addProperty("biome-tag", preferredBiome.location().toString());
+                }
+            }
+            catch (NoSuchFieldException | IllegalAccessException e)
+            {
+                LOGGER.error("Failed to read preferredBiome from ItemCrop via reflection", e);
+            }
+            json.add("crop", crop);
         }
 
         options.saveJsonFile(id.getNamespace(), id.getPath(), json);
