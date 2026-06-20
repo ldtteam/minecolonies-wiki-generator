@@ -111,8 +111,8 @@ public class Entrypoint extends RootEntrypoint<ClientLevel>
         collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH));
         collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH_TREE));
         collector.add(true, new ResearchDataGenerator(ResearchObjectType.RESEARCH_EFFECT));
-        collector.add(true, new SchematicImageDataGenerator());
-        collector.add(true, new SchematicIndexDataGenerator());
+        //collector.add(true, new SchematicImageDataGenerator());
+        //collector.add(true, new SchematicIndexDataGenerator());
     }
 
     @Override
