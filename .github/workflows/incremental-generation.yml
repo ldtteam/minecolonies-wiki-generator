@@ -68,15 +68,23 @@ jobs:
           sleep 2
           ./gradlew runClient -Psecret_curseforge_api_key="$SECRET_CURSEFORGE_API_KEY"
 
-      - name: Commit generated output
+      - name: Commit updated dependency versions to master
         if: steps.update.outputs.updated == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add versions/*/output gradle.properties versions/*/gradle.properties
+          git add gradle.properties versions/*/gradle.properties
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
             git commit -m "chore: incremental wiki data generation [skip ci]"
             git push
           fi
+
+      - name: Publish generated output to publish branch
+        if: steps.update.outputs.updated == 'true'
+        run: |
+          git add -A
+          TREE=$(git write-tree)
+          COMMIT=$(git commit-tree "$TREE" -m "chore: incremental wiki data generation")
+          git push origin "$COMMIT:refs/heads/publish" --force
