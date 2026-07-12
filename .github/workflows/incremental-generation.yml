@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     outputs:
       updated: ${{ steps.update.outputs.updated }}
       versions_json: ${{ steps.build-json.outputs.versions_json }}
