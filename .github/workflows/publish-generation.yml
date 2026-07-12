@@ -75,6 +75,8 @@ jobs:
 
       - name: Force-push generated output to publish branch
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           TREE=$(git write-tree)
           COMMIT=$(git commit-tree "$TREE" -m "chore: incremental wiki data generation")
