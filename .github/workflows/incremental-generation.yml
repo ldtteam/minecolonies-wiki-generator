@@ -6,10 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  generate:
+  update-versions:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      updated: ${{ steps.update.outputs.updated }}
+      versions_json: ${{ steps.build-json.outputs.versions_json }}
 
     steps:
       - name: Checkout repository
@@ -37,11 +40,6 @@ jobs:
           restore-keys: |
             gradle-deps-${{ runner.os }}-
 
-      - name: Install virtual display dependencies
-        run: |
-          sudo apt-get update -q
-          sudo apt-get install -y xvfb libgl1-mesa-dri libglx-mesa0 mesa-utils
-
       - name: Grant Gradle wrapper execute permission
         run: chmod +x gradlew
 
@@ -57,17 +55,6 @@ jobs:
             echo "updated=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Run generators
-        if: steps.update.outputs.updated == 'true'
-        env:
-          EXCLUDED_NAMESPACES: ${{ vars.EXCLUDED_NAMESPACES }}
-          DISPLAY: ':99'
-          SECRET_CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
-        run: |
-          Xvfb $DISPLAY -screen 0 1024x768x24 &
-          sleep 2
-          ./gradlew runClient -Psecret_curseforge_api_key="$SECRET_CURSEFORGE_API_KEY"
-
       - name: Commit updated dependency versions to master
         if: steps.update.outputs.updated == 'true'
         run: |
@@ -81,10 +68,45 @@ jobs:
             git push
           fi
 
-      - name: Publish generated output to publish branch
+      - name: Build versions JSON
+        id: build-json
         if: steps.update.outputs.updated == 'true'
         run: |
-          git add -A
-          TREE=$(git write-tree)
-          COMMIT=$(git commit-tree "$TREE" -m "chore: incremental wiki data generation")
-          git push origin "$COMMIT:refs/heads/publish" --force
+          json="{"
+          first_version=true
+          for props_file in versions/*/gradle.properties; do
+            version_id=$(basename $(dirname "$props_file"))
+            if [ "$first_version" = true ]; then first_version=false; else json="$json,"; fi
+            json="$json\"$version_id\":{"
+            first_prop=true
+            while IFS='=' read -r key value; do
+              [[ "$key" =~ ^[[:space:]]*# ]] && continue
+              [[ -z "$key" ]] && continue
+              key=$(echo "$key" | xargs)
+              value=$(echo "$value" | xargs)
+              case "$key" in
+                minecolonies_version|structurize_version|blockui_version|domum_ornamentum_version|multi_piston_version|stylecolonies_version)
+                  if [ "$first_prop" = true ]; then first_prop=false; else json="$json,"; fi
+                  json="$json\"$key\":\"$value\""
+                  ;;
+              esac
+            done < "$props_file"
+            json="$json}"
+          done
+          json="$json}"
+          echo "versions_json=$json" >> $GITHUB_OUTPUT
+
+      - name: Trigger publish generation
+        if: steps.update.outputs.updated == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'publish-generation.yml',
+              ref: 'master',
+              inputs: {
+                versions_json: '${{ steps.build-json.outputs.versions_json }}'
+              }
+            });

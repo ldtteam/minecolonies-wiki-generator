@@ -1,0 +1,81 @@
+name: Publish Wiki Data Generation
+
+on:
+  workflow_dispatch:
+    inputs:
+      versions_json:
+        description: 'JSON object mapping version IDs to their dependency versions. If omitted, gradle.properties files on the publish branch are used as-is. Do not attempt to hand-fill this in.'
+        required: false
+        default: ''
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout publish branch
+        uses: actions/checkout@v4
+        with:
+          ref: publish
+
+      - name: Apply version overrides
+        if: inputs.versions_json != ''
+        run: |
+          echo '${{ inputs.versions_json }}' > /tmp/versions.json
+          for props_file in versions/*/gradle.properties; do
+            version_id=$(basename $(dirname "$props_file"))
+            keys=$(jq -r --arg v "$version_id" 'if .[$v] then .[$v] | keys[] else empty end' /tmp/versions.json)
+            for key in $keys; do
+              value=$(jq -r --arg v "$version_id" --arg k "$key" '.[$v][$k]' /tmp/versions.json)
+              sed -i "s/^$key=.*/$key=$value/" "$props_file"
+            done
+          done
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Set up Gradle wrapper cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle/wrapper
+          key: gradle-wrapper-${{ runner.os }}-${{ hashFiles('**/gradle-wrapper.properties') }}
+
+      - name: Set up Gradle dependency cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/loom-cache
+          key: gradle-deps-${{ runner.os }}-${{ hashFiles('**/*.gradle', '**/*.gradle.kts') }}
+          restore-keys: |
+            gradle-deps-${{ runner.os }}-
+
+      - name: Install virtual display dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y xvfb libgl1-mesa-dri libglx-mesa0 mesa-utils
+
+      - name: Grant Gradle wrapper execute permission
+        run: chmod +x gradlew
+
+      - name: Run generators
+        env:
+          EXCLUDED_NAMESPACES: ${{ vars.EXCLUDED_NAMESPACES }}
+          DISPLAY: ':99'
+          SECRET_CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
+        run: |
+          Xvfb $DISPLAY -screen 0 1024x768x24 &
+          sleep 2
+          ./gradlew runClient -Psecret_curseforge_api_key="$SECRET_CURSEFORGE_API_KEY"
+
+      - name: Force-push generated output to publish branch
+        run: |
+          git add -A
+          TREE=$(git write-tree)
+          COMMIT=$(git commit-tree "$TREE" -m "chore: incremental wiki data generation")
+          git push origin "$COMMIT:refs/heads/publish" --force
