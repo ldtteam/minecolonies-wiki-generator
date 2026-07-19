@@ -1,0 +1,578 @@
+{
+  "properties": [
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    {
+      "property": "ominous",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "property": "vault_state",
+      "type": "enum",
+      "values": [
+        "INACTIVE",
+        "ACTIVE",
+        "UNLOCKING",
+        "EJECTING"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "-1595713888"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "-1532747845"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "UNLOCKING"
+        }
+      ],
+      "imageid": "-642683873"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "EJECTING"
+        }
+      ],
+      "imageid": "882448294"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "1233694917"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "-1833713888"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "UNLOCKING"
+        }
+      ],
+      "imageid": "1169643162"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "EJECTING"
+        }
+      ],
+      "imageid": "-583110197"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "-924867224"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "997556355"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "UNLOCKING"
+        }
+      ],
+      "imageid": "-1321273769"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "EJECTING"
+        }
+      ],
+      "imageid": "1553294958"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "555105021"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "-703695016"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "UNLOCKING"
+        }
+      ],
+      "imageid": "1608192866"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "EJECTING"
+        }
+      ],
+      "imageid": "-1261700093"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "-920810704"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "738342987"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "UNLOCKING"
+        }
+      ],
+      "imageid": "-1195521649"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "EJECTING"
+        }
+      ],
+      "imageid": "1557351478"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "680857141"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "-149374832"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "UNLOCKING"
+        }
+      ],
+      "imageid": "1211541290"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "EJECTING"
+        }
+      ],
+      "imageid": "-1135947973"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "-1565574658"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "1680687769"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "UNLOCKING"
+        }
+      ],
+      "imageid": "291632257"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "vault_state",
+          "value": "EJECTING"
+        }
+      ],
+      "imageid": "912587524"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "-2126956249"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "-1001457662"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "UNLOCKING"
+        }
+      ],
+      "imageid": "68672120"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "vault_state",
+          "value": "EJECTING"
+        }
+      ],
+      "imageid": "351205933"
+    }
+  ]
+}

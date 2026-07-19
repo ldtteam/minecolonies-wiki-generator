@@ -1,0 +1,101 @@
+{
+  "properties": [
+    {
+      "property": "type",
+      "type": "enum",
+      "values": [
+        "top",
+        "bottom",
+        "double"
+      ]
+    },
+    {
+      "property": "waterlogged",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "type",
+          "value": "top"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1479301326"
+    },
+    {
+      "values": [
+        {
+          "property": "type",
+          "value": "top"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1009807883"
+    },
+    {
+      "values": [
+        {
+          "property": "type",
+          "value": "bottom"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "2003323062"
+    },
+    {
+      "values": [
+        {
+          "property": "type",
+          "value": "bottom"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1596981511"
+    },
+    {
+      "values": [
+        {
+          "property": "type",
+          "value": "double"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1098196944"
+    },
+    {
+      "values": [
+        {
+          "property": "type",
+          "value": "double"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-692124371"
+    }
+  ]
+}

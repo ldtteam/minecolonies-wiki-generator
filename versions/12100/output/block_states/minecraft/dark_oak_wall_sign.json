@@ -1,0 +1,128 @@
+{
+  "properties": [
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    {
+      "property": "waterlogged",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1972213914"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1154455969"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-504066146"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1408451879"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "290996438"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "285588207"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1878023096"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1765459389"
+    }
+  ]
+}

@@ -1,0 +1,1648 @@
+{
+  "properties": [
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    {
+      "property": "half",
+      "type": "enum",
+      "values": [
+        "upper",
+        "lower"
+      ]
+    },
+    {
+      "property": "hinge",
+      "type": "enum",
+      "values": [
+        "left",
+        "right"
+      ]
+    },
+    {
+      "property": "open",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "property": "powered",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1090074554"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1328565665"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-515426267"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1962793378"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1809169033"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1010803646"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-833188286"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "702105381"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-700300571"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "526657250"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1317334682"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1421531007"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1007260618"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1921446557"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "77454625"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1132735450"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "615967870"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1618694039"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "832281325"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "792055770"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1138090671"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-159933962"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-2003925894"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1231022099"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1005741853"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1874364842"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "30372910"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1702698681"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1939999086"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "750708949"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1093282983"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1229104366"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "2014386614"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1217385935"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1233589429"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "347705106"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-736782567"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-604284626"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1846690738"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-2120990795"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1890806699"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-2019294350"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "431681014"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1258348017"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1538690982"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "306358285"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1537633647"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "339135670"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1724269016"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1151593473"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1299381891"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1907695868"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-670990105"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1435281696"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-408710236"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "upper"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "976023043"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1334495033"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1953501888"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "497473476"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "left"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-997052957"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1472898520"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "true"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1949042689"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "501932675"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "half",
+          "value": "lower"
+        },
+        {
+          "property": "hinge",
+          "value": "right"
+        },
+        {
+          "property": "open",
+          "value": "false"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-858817788"
+    }
+  ]
+}
