@@ -1,0 +1,441 @@
+{
+  "properties": [
+    {
+      "property": "face",
+      "type": "enum",
+      "values": [
+        "FLOOR",
+        "WALL",
+        "CEILING"
+      ]
+    },
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    {
+      "property": "powered",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "FLOOR"
+        },
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-613679980"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "FLOOR"
+        },
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1676435773"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "FLOOR"
+        },
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1459290316"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "FLOOR"
+        },
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1838866037"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "FLOOR"
+        },
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "432099396"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "FLOOR"
+        },
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "677953811"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "FLOOR"
+        },
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-410501962"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "FLOOR"
+        },
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "327115489"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "WALL"
+        },
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1619160110"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "WALL"
+        },
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1513418565"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "WALL"
+        },
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "453810186"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "WALL"
+        },
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1350988301"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "WALL"
+        },
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1369495878"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "WALL"
+        },
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-327526319"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "WALL"
+        },
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "526894520"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "WALL"
+        },
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-678364641"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "CEILING"
+        },
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1816429061"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "CEILING"
+        },
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "642500466"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "CEILING"
+        },
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-405567939"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "CEILING"
+        },
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "480070202"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "CEILING"
+        },
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1341774003"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "CEILING"
+        },
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1186904444"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "CEILING"
+        },
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "powered",
+          "value": "true"
+        }
+      ],
+      "imageid": "499172645"
+    },
+    {
+      "values": [
+        {
+          "property": "face",
+          "value": "CEILING"
+        },
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "powered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1537742766"
+    }
+  ]
+}

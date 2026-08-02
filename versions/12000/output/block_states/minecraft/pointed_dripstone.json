@@ -1,0 +1,373 @@
+{
+  "properties": [
+    {
+      "property": "thickness",
+      "type": "enum",
+      "values": [
+        "tip_merge",
+        "tip",
+        "frustum",
+        "middle",
+        "base"
+      ]
+    },
+    {
+      "property": "vertical_direction",
+      "type": "enum",
+      "values": [
+        "up",
+        "down"
+      ]
+    },
+    {
+      "property": "waterlogged",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "tip_merge"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "570726314"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "tip_merge"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1699188545"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "tip_merge"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "772790787"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "tip_merge"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-626747384"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "tip"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "984539011"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "tip"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1642480264"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "tip"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-985165924"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "tip"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "711169423"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "frustum"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-205924260"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "frustum"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-902142769"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "frustum"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1735898677"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "frustum"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-835173866"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "middle"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "873136279"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "middle"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1811004428"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "middle"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-669008976"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "middle"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1922100219"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "base"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1851223653"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "base"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "up"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-366816400"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "base"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1151146932"
+    },
+    {
+      "values": [
+        {
+          "property": "thickness",
+          "value": "base"
+        },
+        {
+          "property": "vertical_direction",
+          "value": "down"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1782608777"
+    }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "properties": [
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    {
+      "property": "occupied",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "property": "part",
+      "type": "enum",
+      "values": [
+        "head",
+        "foot"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "occupied",
+          "value": "true"
+        },
+        {
+          "property": "part",
+          "value": "head"
+        }
+      ],
+      "imageid": "-539267735"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "occupied",
+          "value": "true"
+        },
+        {
+          "property": "part",
+          "value": "foot"
+        }
+      ],
+      "imageid": "-539317257"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "occupied",
+          "value": "false"
+        },
+        {
+          "property": "part",
+          "value": "head"
+        }
+      ],
+      "imageid": "-391853068"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "occupied",
+          "value": "false"
+        },
+        {
+          "property": "part",
+          "value": "foot"
+        }
+      ],
+      "imageid": "-391902590"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "occupied",
+          "value": "true"
+        },
+        {
+          "property": "part",
+          "value": "head"
+        }
+      ],
+      "imageid": "1516115505"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "occupied",
+          "value": "true"
+        },
+        {
+          "property": "part",
+          "value": "foot"
+        }
+      ],
+      "imageid": "1516065983"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "occupied",
+          "value": "false"
+        },
+        {
+          "property": "part",
+          "value": "head"
+        }
+      ],
+      "imageid": "-1099482068"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "occupied",
+          "value": "false"
+        },
+        {
+          "property": "part",
+          "value": "foot"
+        }
+      ],
+      "imageid": "-1099531590"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "occupied",
+          "value": "true"
+        },
+        {
+          "property": "part",
+          "value": "head"
+        }
+      ],
+      "imageid": "249763321"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "occupied",
+          "value": "true"
+        },
+        {
+          "property": "part",
+          "value": "foot"
+        }
+      ],
+      "imageid": "249713799"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "occupied",
+          "value": "false"
+        },
+        {
+          "property": "part",
+          "value": "head"
+        }
+      ],
+      "imageid": "-1701694108"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "occupied",
+          "value": "false"
+        },
+        {
+          "property": "part",
+          "value": "foot"
+        }
+      ],
+      "imageid": "-1701743630"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "occupied",
+          "value": "true"
+        },
+        {
+          "property": "part",
+          "value": "head"
+        }
+      ],
+      "imageid": "988565063"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "occupied",
+          "value": "true"
+        },
+        {
+          "property": "part",
+          "value": "foot"
+        }
+      ],
+      "imageid": "988515541"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "occupied",
+          "value": "false"
+        },
+        {
+          "property": "part",
+          "value": "head"
+        }
+      ],
+      "imageid": "-273676586"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "occupied",
+          "value": "false"
+        },
+        {
+          "property": "part",
+          "value": "foot"
+        }
+      ],
+      "imageid": "-273726108"
+    }
+  ]
+}
