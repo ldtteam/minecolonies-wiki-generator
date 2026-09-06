@@ -1,0 +1,97 @@
+import java.nio.file.Files
+import java.nio.file.Paths
+
+plugins {
+    id 'mc-conventions'
+    id 'net.minecraftforge.gradle'
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    implementation(fg.deobf("curse.maven:minecolonies-245506:${project.minecolonies_version}"))
+    implementation(fg.deobf("curse.maven:structurize-298744:${project.structurize_version}"))
+    implementation(fg.deobf("curse.maven:domum-ornamentum-527361:${project.domum_ornamentum_version}"))
+    implementation(fg.deobf("curse.maven:multi-piston-303278:${project.multi_piston_version}"))
+    implementation(fg.deobf("curse.maven:blockui-522992:${project.blockui_version}"))
+    implementation(fg.deobf("curse.maven:stylecolonies-827507:${project.stylecolonies_version}"))
+}
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    copyIdeResources = true
+
+    runs {
+        // applies to all the run configs below
+        configureEach {
+            workingDirectory project.file('run')
+
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        client {
+            workingDirectory project.file('run-data')
+
+            // Auto-join a world for rendering context
+            // You need to create a singleplayer world named 'datagen_world' first
+            afterEvaluate {
+                if (Files.exists(Paths.get(project.projectDir.absolutePath, 'run-data', 'saves', 'datagen_world', 'level.dat'))) {
+                    args '--quickPlaySingleplayer', 'datagen_world'
+                }
+            }
+        }
+    }
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [minecraft_version      : minecraft_version,
+                             minecraft_version_range: minecraft_version_range,
+                             forge_version          : forge_version,
+                             forge_version_range    : forge_version_range,
+                             loader_version_range   : loader_version_range,
+                             mod_id                 : mod_id,
+                             mod_name               : mod_name,
+                             mod_license            : mod_license,
+                             mod_version            : mod_version,
+                             mod_authors            : mod_authors,
+                             mod_description        : mod_description,
+                             mod_issue_tracker_url  : mod_issue_tracker_url]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties
+    }
+}
+
+tasks.named('jar', Jar).configure {
+    finalizedBy 'reobfJar'
+}
+
+// Implement mcgradleconventions loader attribute
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements'].each { variant ->
+    configurations.named("$variant") {
+        attributes {
+            attribute(loaderAttribute, 'forge')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName].each { variant ->
+        configurations.named("$variant") {
+            attributes {
+                attribute(loaderAttribute, 'forge')
+            }
+        }
+    }
+}

@@ -1,0 +1,101 @@
+{
+  "properties": [
+    {
+      "property": "axis",
+      "type": "enum",
+      "values": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    {
+      "property": "waterlogged",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "axis",
+          "value": "x"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "511996366"
+    },
+    {
+      "values": [
+        {
+          "property": "axis",
+          "value": "x"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-2064731397"
+    },
+    {
+      "values": [
+        {
+          "property": "axis",
+          "value": "y"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-485075987"
+    },
+    {
+      "values": [
+        {
+          "property": "axis",
+          "value": "y"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1385764028"
+    },
+    {
+      "values": [
+        {
+          "property": "axis",
+          "value": "z"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1482148340"
+    },
+    {
+      "values": [
+        {
+          "property": "axis",
+          "value": "z"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "541292157"
+    }
+  ]
+}
