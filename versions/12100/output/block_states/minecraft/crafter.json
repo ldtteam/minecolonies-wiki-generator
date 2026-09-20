@@ -1,0 +1,856 @@
+{
+  "properties": [
+    {
+      "property": "crafting",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "property": "orientation",
+      "type": "enum",
+      "values": [
+        "DOWN_EAST",
+        "DOWN_NORTH",
+        "DOWN_SOUTH",
+        "DOWN_WEST",
+        "UP_EAST",
+        "UP_NORTH",
+        "UP_SOUTH",
+        "UP_WEST",
+        "WEST_UP",
+        "EAST_UP",
+        "NORTH_UP",
+        "SOUTH_UP"
+      ]
+    },
+    {
+      "property": "triggered",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_EAST"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1275014006"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_EAST"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1856511301"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_NORTH"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "465490216"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_NORTH"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1181945015"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_SOUTH"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-274880672"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_SOUTH"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1636361233"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_WEST"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-733899900"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_WEST"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "291667053"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_EAST"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-541574417"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_EAST"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1958789730"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_NORTH"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-14176049"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_NORTH"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1128269954"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_SOUTH"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-754546937"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_SOUTH"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-348391094"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_WEST"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1744478973"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_WEST"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-187999212"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "WEST_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "431627685"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "WEST_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "2063283820"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "EAST_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1911498867"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "EAST_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "694650206"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "NORTH_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-181904229"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "NORTH_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "223663670"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "SOUTH_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1913963677"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "true"
+        },
+        {
+          "property": "orientation",
+          "value": "SOUTH_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1930571666"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_EAST"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1738987095"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_EAST"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-358247430"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_NORTH"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1963754087"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_NORTH"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1980405270"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_SOUTH"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1223383199"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_SOUTH"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "837900978"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_WEST"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-269926811"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "DOWN_WEST"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1789930924"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_EAST"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-916510192"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_EAST"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1074284703"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_NORTH"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1247716814"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_NORTH"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1592243043"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_SOUTH"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "507345926"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_SOUTH"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "115581995"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_WEST"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1369543198"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "UP_WEST"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1073893651"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "WEST_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "56691910"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "WEST_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-969790613"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "EAST_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1536563092"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "EAST_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "1956543069"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "NORTH_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "1079988634"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "NORTH_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "687636759"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "SOUTH_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "true"
+        }
+      ],
+      "imageid": "-652070814"
+    },
+    {
+      "values": [
+        {
+          "property": "crafting",
+          "value": "false"
+        },
+        {
+          "property": "orientation",
+          "value": "SOUTH_UP"
+        },
+        {
+          "property": "triggered",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1466598577"
+    }
+  ]
+}

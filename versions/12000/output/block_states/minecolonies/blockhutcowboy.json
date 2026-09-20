@@ -1,0 +1,52 @@
+{
+  "properties": [
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        }
+      ],
+      "imageid": "200217106"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        }
+      ],
+      "imageid": "204837594"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        }
+      ],
+      "imageid": "827550370"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        }
+      ],
+      "imageid": "827010288"
+    }
+  ]
+}
