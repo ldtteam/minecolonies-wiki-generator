@@ -1,0 +1,182 @@
+{
+  "properties": [
+    {
+      "property": "ominous",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "property": "trial_spawner_state",
+      "type": "enum",
+      "values": [
+        "INACTIVE",
+        "WAITING_FOR_PLAYERS",
+        "ACTIVE",
+        "WAITING_FOR_REWARD_EJECTION",
+        "EJECTING_REWARD",
+        "COOLDOWN"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "-360465552"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "WAITING_FOR_PLAYERS"
+        }
+      ],
+      "imageid": "1994575873"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "-631181365"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "WAITING_FOR_REWARD_EJECTION"
+        }
+      ],
+      "imageid": "-80354826"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "EJECTING_REWARD"
+        }
+      ],
+      "imageid": "-1142004492"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "true"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "COOLDOWN"
+        }
+      ],
+      "imageid": "-931240336"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "INACTIVE"
+        }
+      ],
+      "imageid": "-337800703"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "WAITING_FOR_PLAYERS"
+        }
+      ],
+      "imageid": "801498320"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "ACTIVE"
+        }
+      ],
+      "imageid": "-1364117860"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "WAITING_FOR_REWARD_EJECTION"
+        }
+      ],
+      "imageid": "1562032069"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "EJECTING_REWARD"
+        }
+      ],
+      "imageid": "1182939459"
+    },
+    {
+      "values": [
+        {
+          "property": "ominous",
+          "value": "false"
+        },
+        {
+          "property": "trial_spawner_state",
+          "value": "COOLDOWN"
+        }
+      ],
+      "imageid": "-908575487"
+    }
+  ]
+}
