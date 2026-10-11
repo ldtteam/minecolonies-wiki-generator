@@ -1,0 +1,128 @@
+{
+  "properties": [
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    {
+      "property": "lit",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "lit",
+          "value": "true"
+        }
+      ],
+      "imageid": "182617683"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "lit",
+          "value": "false"
+        }
+      ],
+      "imageid": "508288648"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "lit",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1957927285"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "lit",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1424095920"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "lit",
+          "value": "true"
+        }
+      ],
+      "imageid": "1580257219"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "lit",
+          "value": "false"
+        }
+      ],
+      "imageid": "885441304"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "lit",
+          "value": "true"
+        }
+      ],
+      "imageid": "2050213173"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "lit",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1725793306"
+    }
+  ]
+}
