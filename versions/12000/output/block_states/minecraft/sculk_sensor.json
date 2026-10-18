@@ -1,0 +1,1677 @@
+{
+  "properties": [
+    {
+      "property": "power",
+      "type": "integer",
+      "values": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "property": "sculk_sensor_phase",
+      "type": "enum",
+      "values": [
+        "inactive",
+        "active",
+        "cooldown"
+      ]
+    },
+    {
+      "property": "waterlogged",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "0"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1412145011"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "0"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1129906958"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "0"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1798508488"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "0"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "383896297"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "0"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1534874739"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "0"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "639561230"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "1"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "228797714"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "1"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1194120881"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "1"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1471764887"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "1"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1316844182"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "1"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "351527442"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "1"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1684466609"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "2"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-954549583"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "2"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "776818576"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "2"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "447070966"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "2"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1277382635"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "2"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-831819855"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "2"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "286472848"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "3"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-2137896880"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "3"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1547209263"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "3"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-577622955"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "3"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-423357844"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "3"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-2015167152"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "3"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-2037554991"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "4"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "973723119"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "4"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "423730194"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "4"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1602316876"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "4"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-2124098323"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "4"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1096452847"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "4"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-66615534"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "5"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-209624178"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "5"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1900297645"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "5"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1667956499"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "5"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "470128494"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "5"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-86894450"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "5"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1904323923"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "6"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1392971475"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "6"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "70641812"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "6"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "643262578"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "6"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1230611985"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "6"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1270241747"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "6"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-419703916"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "7"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1718648524"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "7"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "2041581269"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "7"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-381431343"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "7"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1363614832"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "7"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1841378252"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "7"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1551235541"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "8"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "535301227"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "8"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-282446570"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "8"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1406125264"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "8"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-337125647"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "8"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "658030955"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "8"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-772792298"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "9"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-648046070"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "9"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1688492887"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "9"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1864148111"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "9"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-2037866126"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "9"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-525316342"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "9"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1198147159"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "10"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1883541196"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "10"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "2042849645"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "10"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1844985401"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "10"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1663057160"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "10"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1760811468"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "10"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1552503917"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "11"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1228078803"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "11"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-281178194"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "11"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "820291480"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "11"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-37683319"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "11"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1350808531"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "11"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-771523922"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "12"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "44731506"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "12"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1689761263"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "12"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-204402441"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "12"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1738423798"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "12"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "167461234"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "12"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1199415535"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "13"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1138615791"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "13"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-634266576"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "13"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1229096362"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "13"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "855803019"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "13"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1015886063"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "13"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1124612304"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "14"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1973004208"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "14"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1336672881"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "14"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "2041177013"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "14"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-844937460"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "14"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "2095733936"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "14"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "846327153"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "15"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "789656911"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "15"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "inactive"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-987354958"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "15"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1016483092"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "15"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "active"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1749289357"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "15"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "912386639"
+    },
+    {
+      "values": [
+        {
+          "property": "power",
+          "value": "15"
+        },
+        {
+          "property": "sculk_sensor_phase",
+          "value": "cooldown"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1477700686"
+    }
+  ]
+}
