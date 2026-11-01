@@ -1,0 +1,442 @@
+{
+  "properties": [
+    {
+      "property": "powered",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "property": "shape",
+      "type": "enum",
+      "values": [
+        "north_south",
+        "east_west",
+        "ascending_east",
+        "ascending_west",
+        "ascending_north",
+        "ascending_south"
+      ]
+    },
+    {
+      "property": "waterlogged",
+      "type": "boolean",
+      "values": [
+        "true",
+        "false"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "north_south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-824890226"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "north_south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1178682535"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "east_west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "319898096"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "east_west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1987585147"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_east"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "809157595"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_east"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "294557434"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1316790167"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1185313748"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_north"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "851851427"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_north"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1618066226"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1974968101"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "true"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-113993222"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "north_south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-171084117"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "north_south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-28164566"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "east_west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "1960800077"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "east_west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1635736008"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_east"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "670263454"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_east"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "283806359"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1455684308"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_west"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-1196064823"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_north"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "841100352"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_north"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "1284782901"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "true"
+        }
+      ],
+      "imageid": "-1985719176"
+    },
+    {
+      "values": [
+        {
+          "property": "powered",
+          "value": "false"
+        },
+        {
+          "property": "shape",
+          "value": "ascending_south"
+        },
+        {
+          "property": "waterlogged",
+          "value": "false"
+        }
+      ],
+      "imageid": "-447276547"
+    }
+  ]
+}
