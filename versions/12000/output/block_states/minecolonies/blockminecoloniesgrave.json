@@ -1,0 +1,128 @@
+{
+  "properties": [
+    {
+      "property": "facing",
+      "type": "enum",
+      "values": [
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    {
+      "property": "variant",
+      "type": "enum",
+      "values": [
+        "blockgravedefault",
+        "blockgravedecayed"
+      ]
+    }
+  ],
+  "blockstates": [
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "variant",
+          "value": "blockgravedefault"
+        }
+      ],
+      "imageid": "855944741"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "north"
+        },
+        {
+          "property": "variant",
+          "value": "blockgravedecayed"
+        }
+      ],
+      "imageid": "853177789"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "variant",
+          "value": "blockgravedefault"
+        }
+      ],
+      "imageid": "394282221"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "south"
+        },
+        {
+          "property": "variant",
+          "value": "blockgravedecayed"
+        }
+      ],
+      "imageid": "391515269"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "variant",
+          "value": "blockgravedefault"
+        }
+      ],
+      "imageid": "-1094421835"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "west"
+        },
+        {
+          "property": "variant",
+          "value": "blockgravedecayed"
+        }
+      ],
+      "imageid": "-1097188787"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "variant",
+          "value": "blockgravedefault"
+        }
+      ],
+      "imageid": "224448387"
+    },
+    {
+      "values": [
+        {
+          "property": "facing",
+          "value": "east"
+        },
+        {
+          "property": "variant",
+          "value": "blockgravedecayed"
+        }
+      ],
+      "imageid": "221681435"
+    }
+  ]
+}
